@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Observable, of, throwError} from 'rxjs';
-import {HttpClient, HttpHeaders, HttpErrorResponse} from '@angular/common/http';
-import {catchError, tap, map, share} from 'rxjs/operators';
+import {Observable, of} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {catchError, tap, share} from 'rxjs/operators';
 import {Factor} from './factor';
-import {Block} from '../blocks/block';
-
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),

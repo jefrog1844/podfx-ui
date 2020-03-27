@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
-import {Router, ActivatedRoute, ParamMap} from '@angular/router';
+import {Router, ActivatedRoute} from '@angular/router';
 import {Observable, Subject, Subscription} from 'rxjs';
 
 import {InterfacesService} from '../interfaces.service';

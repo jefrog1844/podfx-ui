@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 
 import { BlocksService } from '../blocks.service';
