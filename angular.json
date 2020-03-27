@@ -91,9 +91,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/podfx.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/mui.js"
+            ]
           }
         },
         "lint": {
