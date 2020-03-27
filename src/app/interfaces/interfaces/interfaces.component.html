@@ -1,0 +1,28 @@
+<div class="mui-container-fluid">
+
+    <div class="mui-row">
+
+        <div class="mui-col-md-2">
+            <app-interfaces-detail [selectedInterface]="selectedInterface$ | async" (update) = "update($event)"></app-interfaces-detail>
+        </div>
+        <div class="mui-col-md-10">
+            <!-- dashboard -->
+            <div class="mui-row">
+                <div class="mui-col-md-10">
+                    <H1>Internal interfaces</H1>
+                    <app-interfaces-list [title]="'Internal'" [type]="'INTERNAL'" [matrices]="matrices$|async"
+                        (selected)="selectInterface($event)"></app-interfaces-list>
+                </div>
+            </div>
+            <div class="mui-row">
+                <div class="mui-col-md-10">
+                    <H1>External interfaces</H1>
+                    <app-interfaces-list [title]="'External'" [type]="'EXTERNAL'" [matrices]="matrices$|async"
+                        (selected)="selectInterface($event)"></app-interfaces-list>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

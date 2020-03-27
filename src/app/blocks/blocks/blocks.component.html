@@ -1,0 +1,20 @@
+<div class="mui-container-fluid">
+
+    <div class="mui-row" >
+        
+        <div class="mui-col-md-2">
+            <div *ngIf="(blocks$|async)?.length > 0; else elseBlock">
+                <app-edit-block [block]="selectedBlock$|async" (add)="add($event)" (update)="update($event)" (delete)="delete($event)"></app-edit-block>
+            </div>
+            <ng-template #elseBlock>
+                <app-add-block [dfmeaId]="selectedDfmeaId" (add)="add($event)"></app-add-block>
+            </ng-template>
+        </div>
+
+        <div class="mui-col-md-10">
+            <app-block-diagram [blocks$]="blocks$" (selected)="selectBlock($event)"></app-block-diagram>
+        </div>
+
+    </div>
+
+</div>

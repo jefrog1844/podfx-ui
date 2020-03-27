@@ -1,0 +1,17 @@
+<div class="mui-container-fluid">
+    <div class="mui-row">
+        <div class="mui-col-md-2">
+
+            <app-dfmea-search [searchResults$]="searchResults$" (searchTerm) = "search($event)"></app-dfmea-search>
+
+            <div class="mui--divider-bottom" style="padding-top: 50px"></div>
+            
+            <app-dfmea-editor [dfmea]="selectedDfmea$|async" (delete) = "delete($event)" (add) = "add($event)" (update) = "update($event)"></app-dfmea-editor>
+            
+        </div>
+        
+        <div class="mui-col-md-10">
+             <app-dfmea-list [dfmeas$]="dfmeas$" (selected)="selectDfmea($event)"></app-dfmea-list>
+        </div>
+    </div>
+</div>

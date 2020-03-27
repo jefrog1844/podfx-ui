@@ -1,0 +1,13 @@
+<ng-container *ngIf="blocks$ | async as blocks">
+<ul class="tree">
+    <ng-template #treeView let-blocks>
+        <li *ngFor="let block of blocks">
+            <span (click)="onSelect(block.id)">{{block.id}} - {{ block.name }}</span>
+            <ul *ngIf="block.children?.length > 0">
+                <ng-container *ngTemplateOutlet="treeView;  context:{ $implicit: block.children }"></ng-container>
+            </ul>
+        </li>
+    </ng-template>
+    <ng-container *ngTemplateOutlet="treeView; context:{ $implicit: blocks }"></ng-container>
+</ul>
+</ng-container>

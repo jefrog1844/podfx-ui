@@ -1,0 +1,58 @@
+<form ngNativeValidate class="mui-form" [formGroup]="editBlockForm" (ngSubmit)="updateBlock()">
+    <legend>Edit Block</legend>
+    <div class="mui-select">
+        <select formControlName="type" required>
+            <option value="" disabled selected>Select block type</option>
+            <option value="System">System</option>
+            <option value="High-level subsystem">High-level subsystem</option>
+            <option value="Subsystem">Subsystem</option>
+            <option value="Component">Component</option>
+            <option value="Part">Part</option>
+        </select>
+        <label>Select Type</label>
+    </div>
+
+    <div class="mui-textfield">
+        <input type="text" formControlName="name" placeholder="click parent block" required>
+        <label>Block name</label>
+    </div>
+
+    <div class="mui-textfield">
+        <input type="text" formControlName="parentId" placeholder="click parent block">
+        <label>Parent</label>
+    </div>
+    <button type="submit" class="mui-btn mui-btn--raised">Edit</button>
+    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+    <div class="mui-checkbox">
+        <label>
+            <input type="checkbox" value="" formControlName="deleteBlockControl">
+            select to delete
+        </label>
+    </div>
+</form>   
+
+<div class="mui-divider" style="margin-top:50px;"></div>
+
+<form ngNativeValidate class="mui-form" [formGroup]="addBlockForm" (ngSubmit)="addChildBlock()">
+    <legend>Add sub-block</legend>
+    <div class="mui-select">
+        <select formControlName="type" required>
+            <option value="" disabled selected>Select block type</option>
+            <option value="System">System</option>
+            <option value="High-level subsystem">High-level subsystem</option>
+            <option value="Subsystem">Subsystem</option>
+            <option value="Component">Component</option>
+            <option value="Part">Part</option>
+        </select>
+        <label>Select Type</label>
+    </div>
+
+    <div class="mui-textfield">
+        <input type="text" formControlName="name" placeholder="enter name" required>
+        <label>Name</label>
+    </div>
+
+    <button type="submit" class="mui-btn mui-btn--raised">Add</button>
+    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+</form>
+

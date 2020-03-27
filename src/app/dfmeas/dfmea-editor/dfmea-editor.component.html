@@ -1,0 +1,43 @@
+<!doctype html>
+<div><form ngNativeValidate class="mui-form" [formGroup]="dfmeaForm" (ngSubmit)="submitDfmea()">
+        <legend>Add/Edit Dfmea</legend>
+        <div class="mui-textfield">
+            <input type="text" required formControlName="number" placeholder="enter number">
+            <label>Number</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" required formControlName="title" placeholder="enter title">
+            <label>Title</label>
+        </div>
+        <div class="mui-select">
+            <select formControlName="type" required>
+                <option value="" disabled selected>Select dfmea type</option>
+                <option value="System">System</option>
+                <option value="High-level subsystem">High-level subsystem</option>
+                <option value="Subsystem">Subsystem</option>
+                <option value="Component">Component</option>
+                <option value="Part">Part</option>
+            </select>
+            <label>Select Type</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" required formControlName="originator" placeholder="enter originator">
+            <label>Originator</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" required formControlName="teamMembers" placeholder="enter team">
+            <label>Team</label>
+        </div>
+        <div class="mui-textfield">
+            <input type="text" required formControlName="partNumber" placeholder="part number">
+            <label>Part Number</label>
+        </div>
+        <button type="submit" class="mui-btn mui-btn--small mui-btn--raised">Submit</button>
+        <button type="button" (click) = "cancel()" class="mui-btn mui-btn--small mui-btn--raised">Cancel</button>
+        <div class="mui-checkbox">
+            <label>
+                <input type="checkbox" value="" formControlName="deleteDfmeaControl">
+                select to delete
+            </label>
+        </div>
+    </form></div>

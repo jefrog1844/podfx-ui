@@ -1,0 +1,18 @@
+<div class="mui-row mui--text-center" *ngIf="dfmea$ | async as dfmea">
+    <h4>{{dfmea.number}} - {{dfmea.title}}</h4>
+    <ul class="mui-tabs__bar">
+        <li [ngClass]="{'mui--is-active': isActive('/block-diagram')}"><a routerLink="block-diagram">b-Diagram</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/factors')}"><a routerLink="factors">f-Diagram</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/matrix')}"><a routerLink="matrix">I-Matrix</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/functions')}"><a routerLink="functions">Functions</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/failure-modes')}"><a routerLink="failure-modes">Failure Modes</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/effects')}"><a routerLink="effects">Effects</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/causes')}"><a routerLink="causes">Causes</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/controls')}"><a routerLink="controls">Controls</a></li>
+        <li [ngClass]="{'mui--is-active': isActive('/actions')}"><a routerLink="actions">Actions</a></li>
+    </ul>
+</div>
+
+<div class="mui-row">
+    <router-outlet></router-outlet>   
+</div>

@@ -1,0 +1,8 @@
+<div class="mui-panel mui--bg-accent-light" style="margin-bottom: -18px;">
+    <h4>{{title}}</h4>
+</div>
+<div class="mui-panel">
+    <ul>
+        <li *ngFor="let f of factors" (click)="onSelect(f.id)">{{f.name}}</li>
+    </ul>
+</div>

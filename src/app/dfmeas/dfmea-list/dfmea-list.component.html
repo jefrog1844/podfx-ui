@@ -1,0 +1,11 @@
+<div class="mui-row">
+    <div class="mui-col-md-3" *ngFor="let dfmea of dfmeas$|async">
+         <div class="mui-panel" >
+            <img  class="img-thumbnail" src="../assets/img/fx.png" alt="{{dfmea.title}}" />
+            <a routerLink="{{dfmea.id}}">{{dfmea.title}}</a>
+            <p>{{dfmea.number}}</p>
+            <p>{{dfmea.revision}}</p>
+            <p><button class="mui-button" (click)="onSelect(dfmea.id)">edit</button></p>
+        </div>
+    </div>
+</div>

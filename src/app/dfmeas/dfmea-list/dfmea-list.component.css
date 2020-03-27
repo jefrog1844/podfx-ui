@@ -1,0 +1,30 @@
+/* View: Dfmea list */
+.mui-panel a > img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.img-thumbnail {
+  float: left;
+  height: auto;
+  margin: -0.5em 1em 1.5em 0;
+  padding-bottom: 0px;
+  width: 100px;
+}
+
+.mui-panel button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.mui-panel  button:hover {
+  opacity: 0.7;
+}

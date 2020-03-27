@@ -1,0 +1,69 @@
+<div class="mui-row">
+    <div class="mui-col-md-10"  >
+         <table class="mui-table mui-table--bordered" *ngFor="let m of matrices">
+            <thead>
+                <tr>
+                    <th colspan="6" style="text-align:left;background-color: orange">{{m.inputFactor.name}}</th> 
+                </tr>
+                <tr>
+                    <th style='width: 150px;'>Item</th>
+                    <th>Enabled</th>
+                    <th>PH</th>
+                    <th>ET</th>
+                    <th>ME</th>
+                    <th>DE</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <ng-container *ngIf="type === 'INTERNAL'; else elseBlock">
+                    <tr *ngFor="let i of m.internalInterfaces">
+                        <td  (click)="onSelect(i.id)">{{i.outputFactorName}}</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" [checked]='i.enabled' disabled>
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                        <td>
+                            {{i.physicalConnection}}
+                        </td>
+                        <td>
+                            {{i.energyTransfer}}
+                        </td>
+                        <td>
+                            {{i.materialExchange}}
+                        </td>
+                        <td>
+                            {{i.dataExchange}}
+                        </td>
+                    </tr>   
+                </ng-container>
+                <ng-template #elseBlock>
+                    <tr *ngFor="let i of m.externalInterfaces">
+                        <td  (click)="onSelect(i.id)">{{i.outputFactorName}}</td>
+                        <td>
+                            <label class="switch">
+                                <input type="checkbox" [checked]='i.enabled' disabled>
+                                <span class="slider round"></span>
+                            </label>
+                        </td>
+                        <td>
+                            {{i.physicalConnection}}
+                        </td>
+                        <td>
+                            {{i.energyTransfer}}
+                        </td>
+                        <td>
+                            {{i.materialExchange}}
+                        </td>
+                        <td>
+                            {{i.dataExchange}}
+                        </td>
+                    </tr>   
+                </ng-template>
+
+            </tbody>
+        </table>
+    </div>
+</div>

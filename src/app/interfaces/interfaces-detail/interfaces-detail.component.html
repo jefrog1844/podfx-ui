@@ -1,0 +1,27 @@
+<form ngNativeValidate class="mui-form" [formGroup]="interfaceForm" (ngSubmit)="submitInterface()">
+    <legend>Edit Functions</legend>
+    <div class="mui-textfield">
+        <input type="text" formControlName="physicalConnection" placeholder="enter function">
+        <label>Physical Connection</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="energyTransfer" placeholder="enter function">
+        <label>Energy Transfer</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="materialExchange" placeholder="enter function">
+        <label>Material Exchange</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="dataExchange" placeholder="enter function">
+        <label>Data Exchange</label>
+    </div>
+    <div class="mui-checkbox">
+        <label>
+            <input type="checkbox" value="" formControlName="enabled">
+            select to enable
+        </label>
+    </div>
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small">Submit</button>
+    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+</form>

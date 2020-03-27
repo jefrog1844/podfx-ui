@@ -1,0 +1,14 @@
+<div style="display:flex; align-items: center; justify-content: center;align-content: center">
+    <div class="mui-col-lg-3" style="margin-top: 100px">
+        <form ngNativeValidate class="mui-form" style="margin-bottom: 20px;" [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="mui-textfield">
+                <label>Username</label> <input type="text" placeholder="Enter name" required formControlName="username"/>
+            </div>
+            <div class="mui-textfield">
+                <label>Password</label> <input type="password" placeholder="Enter password" required formControlName="password"/>
+            </div>
+            <button type="submit" class="mui-btn mui-btn--raised">Login</button>
+            <p>{{message}}</p>
+        </form>
+    </div>
+</div>

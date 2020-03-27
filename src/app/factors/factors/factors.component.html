@@ -1,0 +1,57 @@
+<div class="mui-container-fluid">
+
+    <div class="mui-row">
+
+        <!-- detail -->
+        <div class="mui-col-md-2">
+            <app-factor-detail [factor]="selectedFactor$|async" [blockIds$]="blockIds$" (delete) = "delete($event)" (add) = "add($event)" (update) = "update($event)"></app-factor-detail>
+        </div>
+
+        <!-- dashboard -->
+        <div class="mui-col-md-10">
+            <div class="mui-row">
+                <div class="mui-col-md-3" style="margin-top: 50px;">
+                    <app-factors-list [title]="'Environmental Interactions'" [category]="'Environmental'" [factors]="factors$ | async" (selected)="selectFactor($event)"></app-factors-list>
+                </div>
+                <div class="mui-col-md-4">
+                    <app-factors-list [title]="'System Interactions / Adjoining Hardware'" [category]="'System'" [factors]="factors$ | async" (selected)="selectFactor($event)"></app-factors-list>
+                    <div class="triangle-down" style="margin: auto;"></div>
+                </div>
+                <div class="mui-col-md-3" style="margin-top: 50px;">
+                    <app-factors-list [title]="'Customer Usage / Life Cycle'" [category]="'Customer'" [factors]="factors$ | async" (selected)="selectFactor($event)"></app-factors-list>
+                </div>
+            </div>
+
+            <div class="mui-row">
+                <div class="mui-col-md-3">
+                    <app-factors-list [title]="'Signal Factors'" [category]="'Signal'" [factors]="factors$ | async" (selected)="selectFactor($event)"></app-factors-list>
+                </div>
+                <div class="mui-col-md-1" style="margin-top: 30px;">
+                    <div class="triangle-right"></div>
+                </div>
+                <div class="mui-col-md-2" style="margin-top: 20px;">
+                    <div class="mui-panel" style="text-align: center;vertical-align: middle"><span class="mui--text-headline">Product</span></div> 
+                </div>
+                <div class="mui-col-md-1" style="margin-top: 30px;">
+                    <div class="triangle-right"></div>
+                </div>
+                <div class="mui-col-md-3">
+                    <div class="mui-panel" ><a routerLink="../functions">Functions</a></div> 
+                    <div class="mui-panel" ><a routerLink="../failure-modes">Failure Modes</a></div> 
+                </div>
+            </div>
+            
+            <div class="mui-row">
+                <div class="mui-col-md-3"></div>
+                <div class="mui-col-md-4">
+                    <div class="triangle-up" style="margin: auto;"></div>
+                    <app-factors-list [title]="'Internal interactions'" [category]="'Internal'" [factors]="factors$ | async" (selected)="selectFactor($event)"></app-factors-list>
+                </div>
+                <div class="mui-col-md-3"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

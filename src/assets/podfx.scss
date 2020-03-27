@@ -1,0 +1,13 @@
+@import "./src/sass/mui-colors.scss";
+
+
+$mui-primary-color:       mui-color('orange', '500');
+$mui-primary-color-dark:  mui-color('orange', '700');
+$mui-primary-color-light: mui-color('orange', '100');
+
+$mui-accent-color:        mui-color('grey', '500');
+$mui-accent-color-dark:   mui-color('grey', '800');
+$mui-accent-color-light:  mui-color('grey', '200');
+
+
+@import "./src/sass/mui.scss";
