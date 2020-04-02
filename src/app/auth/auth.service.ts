@@ -7,6 +7,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 import {Credentials} from './credentials';
+import {Login} from './login';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -39,8 +40,8 @@ export class AuthenticationService {
         }
     }
     
-    login(cred: Credentials): Observable<Credentials> {
-        return this.http.post<Credentials>(apiUrl, cred, httpOptions)
+    login(login: Login): Observable<Credentials> {
+        return this.http.post<Credentials>(apiUrl, login, httpOptions)
             .pipe(map((creds: Credentials) => {
                 // store user details and basic auth credentials in local storage to keep user logged in between page refreshes
                 //user.authdata = window.btoa(user.username + ':' + user.password);

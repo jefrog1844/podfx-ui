@@ -17,7 +17,7 @@ export class BasicAuthInterceptor implements HttpInterceptor {
         if (creds) {
             request = request.clone({
                 setHeaders: { 
-                    Authorization: `Bearer ${creds.password}`
+                    Authorization: `Bearer ${creds.token}`
                 }
             });
 
