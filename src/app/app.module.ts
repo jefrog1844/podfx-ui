@@ -23,7 +23,7 @@ import {EffectsComponent} from './effects/effects.component';
 import {FailureModesComponent} from './failure-modes/failure-modes.component';
 import {FunctionsComponent} from './functions/functions.component';
 
-import {BasicAuthInterceptor, ErrorInterceptor } from './shared';
+import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
 
 @NgModule({
     declarations: [
@@ -49,7 +49,7 @@ import {BasicAuthInterceptor, ErrorInterceptor } from './shared';
         InterfacesModule
     ],
     providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptor, multi: true },
         { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
         DatePipe,
         AuthenticationService,

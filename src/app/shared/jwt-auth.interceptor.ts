@@ -6,7 +6,7 @@ import {AuthenticationService} from '../auth/auth.service';
 import {Credentials} from '../auth/credentials';
 
 @Injectable()
-export class BasicAuthInterceptor implements HttpInterceptor {
+export class JwtAuthInterceptor implements HttpInterceptor {
     constructor(private authService: AuthenticationService) { }
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
