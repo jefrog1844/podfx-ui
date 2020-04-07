@@ -29,7 +29,7 @@ export class AddBlockComponent {
     addSystemBlock() {
         this.addBlockForm.get('type').setValue('System');
         this.addBlockForm.get('dfmeaId').setValue(this.dfmeaId);
-        this.addBlockForm.get('parentId').setValue(0);
+        this.addBlockForm.get('parentId').setValue('');
         this.add.emit(this.addBlockForm.value);
         this.reset();
     }

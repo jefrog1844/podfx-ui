@@ -3,7 +3,7 @@
         <input type="search" #searchBox id="search-box" (input)="onSearch(searchBox.value)" placeholder="Enter Dfmea title" />
         <label>Search:</label>
     </div>
-    <ul class="mui-list--unstyled mui--bg-accent">
+    <ul class="mui-list--unstyled">
         <li *ngFor="let dfmea of searchResults$ | async" >
             <a routerLink="{{dfmea.id}}">{{dfmea.title}}</a>
         </li>
