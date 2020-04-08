@@ -15,7 +15,7 @@ import { BlockId } from '../../blocks/blockId';
 export class FactorsComponent implements OnInit, OnDestroy {
     _factors = new Subject<Factor[]>();
     factors$ = this._factors.asObservable();
-    selectedDfmeaId: string;
+    selectedDfmeaId: number;
     selectedFactor$: Observable<Factor>;
     blockIds$: Observable<BlockId[]>;
     private unsubscribe: Subscription = new Subscription();
@@ -29,7 +29,7 @@ export class FactorsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.selectedDfmeaId = this.route.parent.snapshot.paramMap.get('dfmeaId');
+        this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
         this.getFactors();
         this.getBlocks();
     }
@@ -45,7 +45,7 @@ export class FactorsComponent implements OnInit, OnDestroy {
         this.blockIds$ = this.blocksService.getBlockIds(this.selectedDfmeaId);
     }
 
-    selectFactor(factorId: string) {
+    selectFactor(factorId: number) {
         this.selectedFactor$ = this.api.getFactor(this.selectedDfmeaId, factorId);
     }
 
@@ -58,14 +58,14 @@ export class FactorsComponent implements OnInit, OnDestroy {
 
     add(factor: Factor) {
         factor.dfmeaId = this.selectedDfmeaId;
-        factor.id = '';
+        //factor.id = '';
         const addSub = this.api.addFactor(this.selectedDfmeaId, factor).subscribe(factor => {
             this.getFactors();
         });
         this.unsubscribe.add(addSub);
     }
 
-    delete(factorId: string): void {
+    delete(factorId: number): void {
         const delSub = this.api.deleteFactor(this.selectedDfmeaId, factorId).subscribe(() => {
             this.selectedFactor$ = null;
             this.getFactors();

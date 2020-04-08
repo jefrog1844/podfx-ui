@@ -26,7 +26,7 @@ export class DfmeasService {
             );
     }
 
-    getDfmea(id: string): Observable<Dfmea> {
+    getDfmea(id: number): Observable<Dfmea> {
         const url = `${apiUrl}/${id}`;
         return this.http.get<Dfmea>(url,{withCredentials: true}).pipe(
             tap(_ => this.log(`fetched dfmea id=${id}`)),
@@ -49,7 +49,7 @@ export class DfmeasService {
         );
     }
 
-    deleteDfmea(id: string): Observable<Dfmea> {
+    deleteDfmea(id: number): Observable<Dfmea> {
         const url = `${apiUrl}/${id}`;
         return this.http.delete<Dfmea>(url, httpOptions).pipe(
             tap(_ => this.log(`deleteDfmea(id)= ${id}`)),

@@ -9,7 +9,7 @@ import {Block} from '../block';
     styleUrls: ['./add-block.component.css']
 })
 export class AddBlockComponent {
-    @Input() dfmeaId: string;
+    @Input() dfmeaId: number;
     @Output() add = new EventEmitter<Block>();
 
 
@@ -29,7 +29,7 @@ export class AddBlockComponent {
     addSystemBlock() {
         this.addBlockForm.get('type').setValue('System');
         this.addBlockForm.get('dfmeaId').setValue(this.dfmeaId);
-        this.addBlockForm.get('parentId').setValue('');
+        this.addBlockForm.get('parentId').setValue(0);
         this.add.emit(this.addBlockForm.value);
         this.reset();
     }

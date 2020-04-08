@@ -20,7 +20,7 @@ export class InterfacesService {
 
     constructor(private http: HttpClient) {}
 
-    getMatrix(dfmeaId: string): Observable<Matrix[]> {
+    getMatrix(dfmeaId: number): Observable<Matrix[]> {
         const url = `${apiUrl}/${dfmeaId}/interfaces/matrix`;
         return this.http.get<Matrix[]>(url,{withCredentials: true}).pipe(
             share(),
@@ -29,7 +29,7 @@ export class InterfacesService {
         );
     }
 
-    getInterfaceDetail(dfmeaId: string, interfaceId: string): Observable<InterfaceDetail> {
+    getInterfaceDetail(dfmeaId: number, interfaceId: number): Observable<InterfaceDetail> {
         const url = `${apiUrl}/${dfmeaId}/interfaces/${interfaceId}`;
         return this.http.get<InterfaceDetail>(url,{withCredentials: true}).pipe(
             tap(_ => this.log(`fetched interface detail id=${interfaceId}`)),
@@ -37,7 +37,7 @@ export class InterfacesService {
         );
     }
 
-    updateInterface(dfmeaId: string, i: InterfaceDetail): Observable<InterfaceDetail> {
+    updateInterface(dfmeaId: number, i: InterfaceDetail): Observable<InterfaceDetail> {
         const url = `${apiUrl}/${dfmeaId}/interfaces/${i.id}`;
         return this.http.put(url, i, httpOptions).pipe(
             tap((i: InterfaceDetail) => this.log(`updated interface id=${i.id}`)),

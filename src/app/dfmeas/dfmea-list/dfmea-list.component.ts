@@ -13,11 +13,11 @@ export class DfmeaListComponent {
     
     @Input() dfmeas$: Observable<Dfmea[]>;
 
-    @Output() selected = new EventEmitter<string>();
+    @Output() selected = new EventEmitter<number>();
 
     constructor() {}
 
-    onSelect(dfmeaId: string) {
+    onSelect(dfmeaId: number) {
         this.selected.emit(dfmeaId);
     }
 }

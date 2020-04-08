@@ -13,11 +13,11 @@ export class BlockDiagramComponent {
     key: string = "children";
 
     @Input() blocks$: Observable<Block[]>;
-    @Output() selected = new EventEmitter<string>();
+    @Output() selected = new EventEmitter<number>();
 
     constructor() {}
 
-    onSelect(id: string) {
+    onSelect(id: number) {
         this.selected.emit(id);
     }
 

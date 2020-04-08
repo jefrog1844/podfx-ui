@@ -31,7 +31,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(sub);
     }
 
-    deleteDfmea(id: string): void {
+    deleteDfmea(id: number): void {
         const delSub = this.api.deleteDfmea(id).subscribe(() => {
             this.selectedDfmea$ = null;
             this.getDfmeas();
@@ -40,7 +40,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     add(dfmea: Dfmea) {
-        dfmea.id = '';
+        //dfmea.id = '';
         const addSub = this.api.addDfmea(dfmea).subscribe(dfmea => {
                 this.getDfmeas();
             });
@@ -54,7 +54,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(updateSub);
     }
 
-    delete(dfmeaId: string) {
+    delete(dfmeaId: number) {
         const delSub = this.api.deleteDfmea(dfmeaId).subscribe(dfmea => {
                 this.selectedDfmea$ = null;
                 this.getDfmeas();
@@ -62,7 +62,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(delSub);
     }
 
-    selectDfmea(dfmeaId: string) {
+    selectDfmea(dfmeaId: number) {
         this.selectedDfmea$ = this.api.getDfmea(dfmeaId);
     }
 

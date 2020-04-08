@@ -49,17 +49,18 @@ export class DfmeaEditorComponent {
 
     @Output() add = new EventEmitter<Dfmea>();
     @Output() update = new EventEmitter<Dfmea>();
-    @Output() delete = new EventEmitter<string>();
+    @Output() delete = new EventEmitter<number>();
 
     constructor(public datepipe: DatePipe) {this.addCheck = true;}
 
-    submitDfmea() {
+    onSubmit() {
         if (this.dfmeaForm.valid) {
             if (this.addCheck) {
                 let latest_date = this.datepipe.transform(Date.now(), 'yyyy-MM-dd');
                 this.dfmeaForm.get('originated').setValue(latest_date);
                 this.dfmeaForm.get('revised').setValue(latest_date);
                 this.dfmeaForm.get('revision').setValue(1);
+                this.dfmeaForm.get('id').setValue(0);
                 this.add.emit(this.dfmeaForm.value);
             } else if (this.dfmeaForm.get('deleteDfmeaControl').value && this.dfmeaForm.get('id').value) {
                 this.delete.emit(this._dfmea.id);

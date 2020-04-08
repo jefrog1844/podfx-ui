@@ -47,13 +47,14 @@ export class FactorDetailComponent {
 
     @Output() add = new EventEmitter<Factor>();
     @Output() update = new EventEmitter<Factor>();
-    @Output() delete = new EventEmitter<string>();
+    @Output() delete = new EventEmitter<number>();
 
     constructor() {this.addCheck = true;}
 
-    submitFactor() {
+    onSubmit() {
         if (this.factorForm.valid) {
             if (this.addCheck) {
+                this.factorForm.get('id').setValue(0);
                 this.add.emit(this.factorForm.value);
             } else if (this.factorForm.get('deleteFactorControl').value && this.factorForm.get('id').value) {
                 this.delete.emit(this._factor.id);
@@ -74,7 +75,7 @@ export class FactorDetailComponent {
             f.name = name;
             f.type = type;
             f.category = category;
-            f.id = '';
+            //f.id = '';
             this.add.emit(f);
         }
     }

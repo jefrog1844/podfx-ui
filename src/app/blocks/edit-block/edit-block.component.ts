@@ -53,7 +53,7 @@ export class EditBlockComponent {
 
     @Output() add = new EventEmitter<Block>();
     @Output() update = new EventEmitter<Block>();
-    @Output() delete = new EventEmitter<string>();
+    @Output() delete = new EventEmitter<number>();
 
     constructor() {}
 
@@ -70,7 +70,7 @@ export class EditBlockComponent {
 
     addChildBlock() {
         if (this.addBlockForm.valid) {
-            this.addBlockForm.get('id').setValue('');
+            this.addBlockForm.get('id').setValue(0);
             this.add.emit(this.addBlockForm.value);
             this.reset();
         }

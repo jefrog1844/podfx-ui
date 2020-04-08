@@ -2,7 +2,7 @@ export class InterfaceDetail {
     constructor() {}
     inputFactorName: string;
     outputFactorName: string;
-    id: string;
+    id: number;
     enabled: boolean;
     physicalConnection: string;
     energyTransfer: string;

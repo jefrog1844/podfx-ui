@@ -3,7 +3,7 @@ export class Interface {
     constructor() { }
     inputFactor: Factor;
     outputFactor: Factor;
-    id: string;
+    id: number;
     enabled: boolean;
     physicalConnection: string;
     energyTransfer: string;

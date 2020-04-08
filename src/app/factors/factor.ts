@@ -3,7 +3,7 @@ export class Factor {
     name: string;
     type: string;
     category: string;
-    id: string;
-    dfmeaId: string;
+    id: number;
+    dfmeaId: number;
 }
 

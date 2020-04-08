@@ -1,5 +1,5 @@
 export class Dfmea {
-    id: string;
+    id: number;
     number: string;
     title: string;
     type: string;

@@ -12,7 +12,7 @@ import { Block } from '../block';
 })
 export class BlocksComponent implements OnInit, OnDestroy {
     unsubscribe: Subscription = new Subscription();
-    selectedDfmeaId: string;
+    selectedDfmeaId: number;
     selectedBlock$: Observable<Block>;
     _blocks = new Subject<Block[]>();
     blocks$ = this._blocks.asObservable();
@@ -24,7 +24,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.selectedDfmeaId = this.route.parent.snapshot.paramMap.get('dfmeaId');
+        this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
         this.gotoBlockDiagram();
     }
 
@@ -51,7 +51,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(addSub);
     }
 
-    delete(blockId: string): void {
+    delete(blockId: number): void {
         const delSub = this.api.deleteBlock(this.selectedDfmeaId, blockId).subscribe(() => {
             this.selectedBlock$ = null;
             this.gotoBlockDiagram();
@@ -59,7 +59,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(delSub);
     }
 
-    selectBlock(blockId: string) {
+    selectBlock(blockId: number) {
         this.selectedBlock$ = this.api.getBlock(this.selectedDfmeaId, blockId);
     }
 

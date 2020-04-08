@@ -18,7 +18,7 @@ export class FactorsService {
 
     constructor(private http: HttpClient) {}
 
-    getFactors(dfmeaId: string): Observable<Factor[]> {
+    getFactors(dfmeaId: number): Observable<Factor[]> {
         const url = `${apiUrl}/${dfmeaId}/factors`;
         return this.http.get<Factor[]>(url,{withCredentials: true}).pipe(
             share(),
@@ -27,7 +27,7 @@ export class FactorsService {
         );
     }
 
-    getFactor(dfmeaId: string, factorId: string): Observable<Factor> {
+    getFactor(dfmeaId: number, factorId: number): Observable<Factor> {
         const url = `${apiUrl}/${dfmeaId}/factors/${factorId}`;
         return this.http.get<Factor>(url,{withCredentials: true}).pipe(
             tap(_ => this.log(`fetched factor id=${factorId}`)),
@@ -35,7 +35,7 @@ export class FactorsService {
         );
     }
 
-    addFactor(dfmeaId: string, factor: Factor): Observable<Factor> {
+    addFactor(dfmeaId: number, factor: Factor): Observable<Factor> {
         const url = `${apiUrl}/${dfmeaId}/factors`;
         return this.http.post<Factor>(url, factor, httpOptions).pipe(
             tap((f: Factor) => this.log(`added factor w/ id=${f.id}`)),
@@ -43,7 +43,7 @@ export class FactorsService {
         );
     }
 
-    updateFactor(dfmeaId: string, factor: Factor): Observable<Factor> {
+    updateFactor(dfmeaId: number, factor: Factor): Observable<Factor> {
         const url = `${apiUrl}/${dfmeaId}/factors/${factor.id}`;
         return this.http.put(url, factor, httpOptions).pipe(
             tap((f: Factor) => this.log(`updated factor id=${f.id}`)),
@@ -51,7 +51,7 @@ export class FactorsService {
         );
     }
 
-    deleteFactor(dfmeaId: string, factorId: string): Observable<Factor> {
+    deleteFactor(dfmeaId: number, factorId: number): Observable<Factor> {
         const url = `${apiUrl}/${dfmeaId}/factors/${factorId}`;
         return this.http.delete<Factor>(url, httpOptions).pipe(
             tap(_ => this.log(`deleteFactor(id)= ${factorId}`)),

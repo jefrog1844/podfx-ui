@@ -20,7 +20,7 @@ export class BlocksService {
 
     constructor(private http: HttpClient) {}
 
-    getBlockDiagram(dfmeaId: string): Observable<Block[]> {
+    getBlockDiagram(dfmeaId: number): Observable<Block[]> {
         const url = `${apiUrl}/${dfmeaId}/blocks/diagram`;
         return this.http.get<Block[]>(url,{withCredentials: true}).pipe(
             share(),
@@ -29,7 +29,7 @@ export class BlocksService {
         );
     }
 
-    getBlock(dfmeaId: string, blockId: string): Observable<Block> {
+    getBlock(dfmeaId: number, blockId: number): Observable<Block> {
         const url = `${apiUrl}/${dfmeaId}/blocks/${blockId}`;
         return this.http.get<Block>(url,{withCredentials: true}).pipe(
             tap(_ => this.log(`fetched block id=${blockId}`)),
@@ -37,7 +37,7 @@ export class BlocksService {
         );
     }
 
-    addBlock(dfmeaId: string, block: Block): Observable<Block> {
+    addBlock(dfmeaId: number, block: Block): Observable<Block> {
         const url = `${apiUrl}/${dfmeaId}/blocks`;
         return this.http.post<Block>(url, block, httpOptions).pipe(
             tap((b: Block) => this.log(`added block w/ id=${b.id}`)),
@@ -45,7 +45,7 @@ export class BlocksService {
         );
     }
 
-    deleteBlock(dfmeaId: string, blockId: string): Observable<Block> {
+    deleteBlock(dfmeaId: number, blockId: number): Observable<Block> {
         const url = `${apiUrl}/${dfmeaId}/blocks/${blockId}`;
         return this.http.delete<Block>(url, httpOptions).pipe(
             tap(_ => this.log(`deleteBlock(id)= ${blockId}`)),
@@ -53,7 +53,7 @@ export class BlocksService {
         );
     }
 
-    updateBlock(dfmeaId: string, block: Block): Observable<any> {
+    updateBlock(dfmeaId: number, block: Block): Observable<any> {
         const url = `${apiUrl}/${dfmeaId}/blocks/${block.id}`;
         return this.http.put(url, block, httpOptions).pipe(
             tap(_ => this.log(`updated block id=${block.id}`)),
@@ -61,7 +61,7 @@ export class BlocksService {
         );
     }
 
-    getBlockIds(dfmeaId: string): Observable<BlockId[]> {
+    getBlockIds(dfmeaId: number): Observable<BlockId[]> {
         const blocksUrl = `${apiUrl}/${dfmeaId}/blocks`;
         return this.http.get<BlockId[]>(blocksUrl,{withCredentials: true})
             .pipe(

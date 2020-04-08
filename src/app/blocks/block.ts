@@ -1,8 +1,8 @@
 export class Block {
-    id: string;
+    id: number;
     name: string;
     type: string;
-    parentId: string;
-    dfmeaId: string;
+    parentId: number;
+    dfmeaId: number;
 }
 

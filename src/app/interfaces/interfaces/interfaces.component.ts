@@ -14,7 +14,7 @@ import {InterfaceDetail} from '../interface-detail';
 
 export class InterfacesComponent implements OnInit, OnDestroy {
 
-    selectedDfmeaId: string;
+    selectedDfmeaId: number;
     _matrices = new Subject<Matrix[]>();
     matrices$ = this._matrices.asObservable();
     selectedInterface$: Observable<InterfaceDetail>;
@@ -26,7 +26,7 @@ export class InterfacesComponent implements OnInit, OnDestroy {
         private api: InterfacesService) {}
 
     ngOnInit() {
-        this.selectedDfmeaId = this.route.parent.snapshot.paramMap.get('dfmeaId');
+        this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
         this.getMatrices();
     }
 
@@ -37,7 +37,7 @@ export class InterfacesComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(sub);
     }
 
-    selectInterface(interfaceId: string) {
+    selectInterface(interfaceId: number) {
         this.selectedInterface$ = this.api.getInterfaceDetail(this.selectedDfmeaId, interfaceId);
     }
 
