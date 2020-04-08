@@ -4,7 +4,7 @@ import {Routes, RouterModule} from '@angular/router';
 import {DfmeasComponent} from './dfmeas/dfmeas/dfmeas.component';
 import {DfmeaDetailComponent} from './dfmeas/dfmea-detail/dfmea-detail.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
-import {FunctionsComponent} from './functions/functions.component';
+import {FunktionsComponent} from './funktions/funktions/funktions.component';
 import {FailureModesComponent} from './failure-modes/failure-modes.component';
 import {EffectsComponent} from './effects/effects.component';
 import {CausesComponent} from './causes/causes.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
             {path: 'block-diagram', component: BlocksComponent},
             {path: 'factors', component: FactorsComponent},
             {path: 'matrix', component: InterfacesComponent},
-            {path: 'functions', component: FunctionsComponent},
+            {path: 'funktions', component: FunktionsComponent},
             {path: 'failure-modes', component: FailureModesComponent},
             {path: 'effects', component: EffectsComponent},
             {path: 'causes', component: CausesComponent},

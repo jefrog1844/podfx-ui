@@ -12,6 +12,7 @@ import {DfmeasModule} from './dfmeas/dfmeas.module';
 import {BlocksModule} from './blocks/blocks.module';
 import {FactorsModule} from './factors/factors.module';
 import {InterfacesModule} from './interfaces/interfaces.module';
+import {FunktionsModule} from './funktions/funktions.module';
 import {AuthModule} from './auth/auth.module';
 import {AuthenticationService} from './auth/auth.service';
 import {AuthGuard} from './auth/auth.guard';
@@ -21,7 +22,7 @@ import {CausesComponent} from './causes/causes.component';
 import {ControlsComponent} from './controls/controls.component';
 import {EffectsComponent} from './effects/effects.component';
 import {FailureModesComponent} from './failure-modes/failure-modes.component';
-import {FunctionsComponent} from './functions/functions.component';
+
 
 import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
 
@@ -32,8 +33,7 @@ import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
         CausesComponent,
         ControlsComponent,
         EffectsComponent,
-        FailureModesComponent,
-        FunctionsComponent
+        FailureModesComponent
     ],
     imports: [
         BrowserModule,
@@ -46,7 +46,8 @@ import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
         BlocksModule,
         DfmeasModule,
         FactorsModule,
-        InterfacesModule
+        InterfacesModule,
+        FunktionsModule
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtAuthInterceptor, multi: true },
