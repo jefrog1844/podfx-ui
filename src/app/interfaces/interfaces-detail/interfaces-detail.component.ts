@@ -12,8 +12,6 @@ import {InterfaceDetail} from '../interface-detail';
 
 export class InterfacesDetailComponent implements OnInit {
 
-  
-
     private _selectedInterface: InterfaceDetail;
 
     interfaceForm = new FormGroup({
@@ -35,6 +33,7 @@ export class InterfacesDetailComponent implements OnInit {
     }
 
     @Output() update = new EventEmitter<InterfaceDetail>();
+    @Output() generate = new EventEmitter<boolean>();
 
     get selectedInterface() {
         return this._selectedInterface;
@@ -51,6 +50,11 @@ export class InterfacesDetailComponent implements OnInit {
             this.update.emit(this.interfaceForm.value);
             this.reset();
         }
+    }
+    
+    onGenerate() {
+        console.log("onGenerate called!");
+        this.generate.emit(true);
     }
     
     reset() {

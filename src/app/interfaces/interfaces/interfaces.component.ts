@@ -48,6 +48,15 @@ export class InterfacesComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(updateSub);
     }
 
+    generate(value: boolean) {
+        if(value) {
+            const generateFunktions = this.api.generateFunktions(this.selectedDfmeaId).subscribe(i => {
+                console.log("generated " + i + " new functions");
+            });
+            this.unsubscribe.add(generateFunktions);
+        }
+    }
+    
     ngOnDestroy() {
         this.unsubscribe.unsubscribe();
     }

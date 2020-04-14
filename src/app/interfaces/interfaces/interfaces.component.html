@@ -3,7 +3,7 @@
     <div class="mui-row">
 
         <div class="mui-col-md-2">
-            <app-interfaces-detail [selectedInterface]="selectedInterface$ | async" (update) = "update($event)"></app-interfaces-detail>
+            <app-interfaces-detail [selectedInterface]="selectedInterface$ | async" (update) = "update($event)" (generate)="generate($event)"></app-interfaces-detail>
         </div>
         <div class="mui-col-md-10">
             <!-- dashboard -->

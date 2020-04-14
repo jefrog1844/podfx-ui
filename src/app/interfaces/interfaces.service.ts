@@ -41,7 +41,15 @@ export class InterfacesService {
         const url = `${apiUrl}/${dfmeaId}/interfaces/${i.id}`;
         return this.http.put(url, i, httpOptions).pipe(
             tap((i: InterfaceDetail) => this.log(`updated interface id=${i.id}`)),
-            catchError(this.handleError<any>('toggleInterface'))
+            catchError(this.handleError<any>('updateInterface'))
+        );
+    }
+    
+    generateFunktions(dfmeaId: number): Observable<number> {
+        const url = `${apiUrl}/${dfmeaId}/interfaces/generateFunktions`;
+        return this.http.get(url, httpOptions).pipe(
+            tap(() => this.log(`generated functions for dfmea id=${dfmeaId}`)),
+            catchError(this.handleError<any>('generateFunktions'))
         );
     }
 
