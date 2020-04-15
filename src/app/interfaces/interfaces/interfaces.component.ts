@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Observable, Subject, Subscription} from 'rxjs';
 
 import {InterfacesService} from '../interfaces.service';
+import {FunktionsService} from '../../funktions/funktions.service'
 import {Matrix} from '../matrix';
 import {InterfaceDetail} from '../interface-detail';
 
@@ -23,7 +24,8 @@ export class InterfacesComponent implements OnInit, OnDestroy {
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private api: InterfacesService) {}
+        private api: InterfacesService,
+        private funktionsService: FunktionsService) {}
 
     ngOnInit() {
         this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
@@ -50,7 +52,7 @@ export class InterfacesComponent implements OnInit, OnDestroy {
 
     generate(value: boolean) {
         if(value) {
-            const generateFunktions = this.api.generateFunktions(this.selectedDfmeaId).subscribe(i => {
+            const generateFunktions = this.funktionsService.generateFunktions(this.selectedDfmeaId).subscribe(i => {
                 console.log("generated " + i + " new functions");
             });
             this.unsubscribe.add(generateFunktions);
