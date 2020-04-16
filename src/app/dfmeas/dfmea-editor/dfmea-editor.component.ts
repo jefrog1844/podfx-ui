@@ -22,7 +22,7 @@ export class DfmeaEditorComponent {
         originated: new FormControl(''),
         revision: new FormControl(''),
         revised: new FormControl(''),
-        teamMembers: new FormControl('', [Validators.required]),
+        teamMembers: new FormControl(''),
         partNumber: new FormControl('', [Validators.required]),
         deleteDfmeaControl: new FormControl({value: '', disabled: true})
     });

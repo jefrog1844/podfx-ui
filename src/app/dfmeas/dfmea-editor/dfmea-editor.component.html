@@ -2,15 +2,15 @@
 <div><form ngNativeValidate class="mui-form" [formGroup]="dfmeaForm" (ngSubmit)="onSubmit()">
         <legend>Add/Edit Dfmea</legend>
         <div class="mui-textfield">
-            <input type="text" required formControlName="number" placeholder="enter number">
+            <input type="text" formControlName="number" placeholder="enter number">
             <label>Number</label>
         </div>
         <div class="mui-textfield">
-            <input type="text" required formControlName="title" placeholder="enter title">
+            <input type="text"  formControlName="title" placeholder="enter title">
             <label>Title</label>
         </div>
         <div class="mui-select">
-            <select formControlName="type" required>
+            <select formControlName="type" >
                 <option value="" disabled selected>Select dfmea type</option>
                 <option value="System">System</option>
                 <option value="High-level subsystem">High-level subsystem</option>
@@ -21,18 +21,18 @@
             <label>Select Type</label>
         </div>
         <div class="mui-textfield">
-            <input type="text" required formControlName="originator" placeholder="enter originator">
+            <input type="text"  formControlName="originator" placeholder="enter originator">
             <label>Originator</label>
         </div>
         <div class="mui-textfield">
-            <input type="text" required formControlName="teamMembers" placeholder="enter team">
+            <input type="text"  formControlName="teamMembers" placeholder="enter team">
             <label>Team</label>
         </div>
         <div class="mui-textfield">
-            <input type="text" required formControlName="partNumber" placeholder="part number">
+            <input type="text"  formControlName="partNumber" placeholder="part number">
             <label>Part Number</label>
         </div>
-        <button type="submit" class="mui-btn mui-btn--small mui-btn--raised">Submit</button>
+        <button type="submit" class="mui-btn mui-btn--small mui-btn--raised" [disabled]="!dfmeaForm.valid">Submit</button>
         <button type="button" (click) = "cancel()" class="mui-btn mui-btn--small mui-btn--raised">Cancel</button>
         <div class="mui-checkbox">
             <label>
