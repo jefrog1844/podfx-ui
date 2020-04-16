@@ -2,7 +2,7 @@
     <legend>Add/Edit Factor</legend>
 
     <div class="mui-select">
-        <select formControlName="category" required>
+        <select formControlName="category">
             <option value="" disabled selected>Select category</option>
             <option value="Customer">Customer Usage</option>
             <option value="Environmental">Environmental Interaction</option>
@@ -14,12 +14,12 @@
     </div>
 
     <div class="mui-textfield">
-        <input type="text" formControlName="name" placeholder="enter factor name" required>
+        <input type="text" formControlName="name" placeholder="enter factor name">
         <label>Factor name</label>
     </div>
 
-    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small">Submit</button>
-    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small" [disabled]="!factorForm.valid">Submit</button>
+    <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
     <div class="mui-checkbox">
         <label>
             <input type="checkbox" value="" formControlName="deleteFactorControl">
@@ -28,11 +28,11 @@
     </div>
 </form>    
 <div class='mui-divider' style="margin-top:50px;"></div>
-<form ngNativeValidate class="mui-form" [formGroup]="importForm" (ngSubmit)="import()">
+<form ngNativeValidate class="mui-form" [formGroup]="importForm" (ngSubmit)="onImport()">
     <legend>Import Block Diagram</legend>
 
     <div class="mui-select">
-        <select formControlName="name" required>
+        <select formControlName="name">
             <option value="" disabled selected>Select block</option>
             <option *ngFor="let block of blockIds$|async" [ngValue]="block.name">
                 {{block.name}}

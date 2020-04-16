@@ -62,7 +62,7 @@ export class FactorDetailComponent {
         }
     }
 
-    import() {
+    onImport() {
         if (this.importForm.valid) {
             let name = this.importForm.get('name').value;
             let category = this.importForm.get('category').value;
@@ -85,7 +85,7 @@ export class FactorDetailComponent {
         this.addCheck = true;
     }
 
-    cancel() {
+    onCancel() {
         this.reset();
     }
 }

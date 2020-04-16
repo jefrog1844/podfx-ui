@@ -13,7 +13,7 @@ export class AddBlockComponent {
     @Output() add = new EventEmitter<Block>();
 
 
-    addBlockForm = new FormGroup({
+    addForm = new FormGroup({
         name: new FormControl(''),
         type: new FormControl(''),
         dfmeaId: new FormControl(''),
@@ -23,14 +23,18 @@ export class AddBlockComponent {
     constructor() {}
 
     reset() {
-        this.addBlockForm.reset();
+        this.addForm.reset();
+    }
+    
+    onCancel() {
+        this.reset();
     }
 
-    addSystemBlock() {
-        this.addBlockForm.get('type').setValue('System');
-        this.addBlockForm.get('dfmeaId').setValue(this.dfmeaId);
-        this.addBlockForm.get('parentId').setValue(0);
-        this.add.emit(this.addBlockForm.value);
+    onSubmit() {
+        this.addForm.get('type').setValue('System');
+        this.addForm.get('dfmeaId').setValue(this.dfmeaId);
+        this.addForm.get('parentId').setValue(0);
+        this.add.emit(this.addForm.value);
         this.reset();
     }
 }

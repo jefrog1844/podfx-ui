@@ -33,7 +33,7 @@
             <label>Part Number</label>
         </div>
         <button type="submit" class="mui-btn mui-btn--small mui-btn--raised" [disabled]="!dfmeaForm.valid">Submit</button>
-        <button type="button" (click) = "cancel()" class="mui-btn mui-btn--small mui-btn--raised">Cancel</button>
+        <button type="button" (click) = "onCancel()" class="mui-btn mui-btn--small mui-btn--raised">Cancel</button>
         <div class="mui-checkbox">
             <label>
                 <input type="checkbox" value="" formControlName="deleteDfmeaControl">

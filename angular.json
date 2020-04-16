@@ -24,8 +24,8 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "src/assets/podfx.css"
+               "src/assets/podfx.css",
+               "src/styles.css"
             ],
             "scripts": [
               "src/assets/mui.js"            

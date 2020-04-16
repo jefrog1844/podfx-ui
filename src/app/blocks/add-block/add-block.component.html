@@ -1,9 +1,9 @@
-<form ngNativeValidate class="mui-form" [formGroup]="addBlockForm" (ngSubmit)="addSystemBlock()">
+<form ngNativeValidate class="mui-form" [formGroup]="addForm" (ngSubmit)="onSubmit()">
     <legend>Add System Block</legend>
     <div class="mui-textfield">
         <input type="text" formControlName="name" placeholder="enter System name" required>
         <label>Block name</label>
     </div>
-    <button type="submit" class="mui-btn mui-btn--raised">Add</button>
-    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised">Cancel</button>
+    <button type="submit" class="mui-btn mui-btn--raised" [disabled]="!addForm.valid">Add</button>
+    <button type="button" (click)='OnCancel()' class="mui-btn mui-btn--raised">Cancel</button>
 </form>

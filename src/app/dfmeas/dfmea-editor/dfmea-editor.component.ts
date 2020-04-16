@@ -75,7 +75,7 @@ export class DfmeaEditorComponent {
         }
     }
 
-    cancel() {
+    onCancel() {
         this.reset();
     }
 

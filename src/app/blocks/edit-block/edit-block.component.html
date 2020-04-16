@@ -1,7 +1,7 @@
-<form ngNativeValidate class="mui-form" [formGroup]="editBlockForm" (ngSubmit)="updateBlock()">
+<form ngNativeValidate class="mui-form" [formGroup]="editForm" (ngSubmit)="onSubmit()">
     <legend>Edit Block</legend>
     <div class="mui-select">
-        <select formControlName="type" required>
+        <select formControlName="type">
             <option value="" disabled selected>Select block type</option>
             <option value="System">System</option>
             <option value="High-level subsystem">High-level subsystem</option>
@@ -13,7 +13,7 @@
     </div>
 
     <div class="mui-textfield">
-        <input type="text" formControlName="name" placeholder="click parent block" required>
+        <input type="text" formControlName="name" placeholder="click parent block">
         <label>Block name</label>
     </div>
 
@@ -21,8 +21,8 @@
         <input type="number" formControlName="parentId" placeholder="click parent block">
         <label>Parent</label>
     </div>
-    <button type="submit" class="mui-btn mui-btn--raised">Edit</button>
-    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+    <button type="submit" class="mui-btn mui-btn--raised" [disabled]="!editForm.valid">Edit</button>
+    <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
     <div class="mui-checkbox">
         <label>
             <input type="checkbox" value="" formControlName="deleteBlockControl">
@@ -33,10 +33,10 @@
 
 <div class="mui-divider" style="margin-top:50px;"></div>
 
-<form ngNativeValidate class="mui-form" [formGroup]="addBlockForm" (ngSubmit)="addChildBlock()">
+<form ngNativeValidate class="mui-form" [formGroup]="addForm" (ngSubmit)="onAdd()">
     <legend>Add sub-block</legend>
     <div class="mui-select">
-        <select formControlName="type" required>
+        <select formControlName="type">
             <option value="" disabled selected>Select block type</option>
             <option value="System">System</option>
             <option value="High-level subsystem">High-level subsystem</option>
@@ -48,11 +48,11 @@
     </div>
 
     <div class="mui-textfield">
-        <input type="text" formControlName="name" placeholder="enter name" required>
+        <input type="text" formControlName="name" placeholder="enter name">
         <label>Name</label>
     </div>
 
-    <button type="submit" class="mui-btn mui-btn--raised">Add</button>
-    <button type="button" (click)='reset()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+    <button type="submit" class="mui-btn mui-btn--raised" [disabled]="!addForm.valid">Add</button>
+    <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
 </form>
 

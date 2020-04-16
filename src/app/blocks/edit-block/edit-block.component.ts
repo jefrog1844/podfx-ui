@@ -11,7 +11,7 @@ import {Block} from '../block';
 export class EditBlockComponent {
     private _block: Block;
 
-    editBlockForm = new FormGroup({
+    editForm = new FormGroup({
         id: new FormControl(''),
         name: new FormControl({value: '', disabled: true}, [Validators.required]),
         type: new FormControl({value: '', disabled: true}, [Validators.required]),
@@ -20,10 +20,10 @@ export class EditBlockComponent {
         deleteBlockControl: new FormControl({value: '', disabled: true})
     });
 
-    addBlockForm = new FormGroup({
+    addForm = new FormGroup({
         id: new FormControl(''),
-        name: new FormControl('', [Validators.required]),
-        type: new FormControl('', [Validators.required]),
+        name: new FormControl({value: '', disabled: true}, [Validators.required]),
+        type: new FormControl({value: '', disabled: true}, [Validators.required]),
         dfmeaId: new FormControl('',[Validators.required]),
         parentId: new FormControl('',[Validators.required])
     });
@@ -36,18 +36,20 @@ export class EditBlockComponent {
     set block(block: Block) {
         if (block) {
             this._block = block;
-            this.editBlockForm.get('id').setValue(block.id);
-            this.editBlockForm.get('name').setValue(block.name);
-            this.editBlockForm.get('type').setValue(block.type);
-            this.editBlockForm.get('parentId').setValue(block.parentId);
-            this.editBlockForm.get('dfmeaId').setValue(block.dfmeaId);
-            this.editBlockForm.get('deleteBlockControl').enable();
-            this.editBlockForm.get('name').enable();
-            this.editBlockForm.get('type').enable();
-            this.editBlockForm.get('parentId').enable();
+            this.editForm.get('id').setValue(block.id);
+            this.editForm.get('name').setValue(block.name);
+            this.editForm.get('type').setValue(block.type);
+            this.editForm.get('parentId').setValue(block.parentId);
+            this.editForm.get('dfmeaId').setValue(block.dfmeaId);
+            this.editForm.get('deleteBlockControl').enable();
+            this.editForm.get('name').enable();
+            this.editForm.get('type').enable();
+            this.editForm.get('parentId').enable();
 
-            this.addBlockForm.get('parentId').setValue(block.id);
-            this.addBlockForm.get('dfmeaId').setValue(block.dfmeaId);
+            this.addForm.get('parentId').setValue(block.id);
+            this.addForm.get('dfmeaId').setValue(block.dfmeaId);
+            this.addForm.get('name').enable();
+            this.addForm.get('type').enable();
         }
     }
 
@@ -57,42 +59,47 @@ export class EditBlockComponent {
 
     constructor() {}
 
-    updateBlock() {
-        if (this.editBlockForm.valid) {
-            if (this.editBlockForm.get('deleteBlockControl').value && this.editBlockForm.get('id').value) {
+    onSubmit() {
+        if (this.editForm.valid) {
+            if (this.editForm.get('deleteBlockControl').value && this.editForm.get('id').value) {
                 this.delete.emit(this._block.id);
             } else {
-                this.update.emit(this.editBlockForm.value)
+                this.update.emit(this.editForm.value)
             }
             this.reset();
         }
     }
 
-    addChildBlock() {
-        if (this.addBlockForm.valid) {
-            this.addBlockForm.get('id').setValue(0);
-            this.add.emit(this.addBlockForm.value);
+    onAdd() {
+        if (this.addForm.valid) {
+            this.addForm.get('id').setValue(0);
+            this.add.emit(this.addForm.value);
             this.reset();
         }
     }
 
+    onCancel() {
+        this.reset();
+    }
+    
     reset() {
-        this.addBlockForm.reset({
+        this.addForm.reset({
             id: '',
-            name: '',
-            type: '',
+            name: {value: '', disabled: true},
+            type: {value: '', disabled: true},
             dfmeaId: '',
             parentId: ''
         });
 
-        this.editBlockForm.reset({
+        this.editForm.reset({
             id: '',
-            name: '',
-            type: '',
+            name: {value: '', disabled: true},
+            type: {value: '', disabled: true},
             dfmeaId: '',
-            parentId: '',
+            parentId: {value: '', disabled: true},
             deleteBlockControl: {value: '', disabled: true}
         });
     }
+    
 
 }
