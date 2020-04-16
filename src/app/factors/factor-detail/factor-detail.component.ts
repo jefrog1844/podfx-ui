@@ -18,7 +18,6 @@ export class FactorDetailComponent {
     factorForm = new FormGroup({
         id: new FormControl(''),
         name: new FormControl('', [Validators.required]),
-        type: new FormControl('', [Validators.required]),
         category: new FormControl('', [Validators.required]),
         dfmeaId: new FormControl(''),
         deleteFactorControl: new FormControl({value: '', disabled: true})
@@ -26,7 +25,6 @@ export class FactorDetailComponent {
 
     importForm = new FormGroup({
         name: new FormControl('', [Validators.required]),
-        type: new FormControl('', [Validators.required]),
         category: new FormControl('', [Validators.required])
     });
 
@@ -37,7 +35,6 @@ export class FactorDetailComponent {
             this._factor = factor;
             this.addCheck = false;
             this.factorForm.get('name').setValue(factor.name);
-            this.factorForm.get('type').setValue(factor.type);
             this.factorForm.get('category').setValue(factor.category);
             this.factorForm.get('id').setValue(factor.id);
             this.factorForm.get('dfmeaId').setValue(factor.dfmeaId);
@@ -68,14 +65,11 @@ export class FactorDetailComponent {
     import() {
         if (this.importForm.valid) {
             let name = this.importForm.get('name').value;
-            let type = this.importForm.get('type').value;
             let category = this.importForm.get('category').value;
 
             let f: Factor = new Factor();
             f.name = name;
-            f.type = type;
             f.category = category;
-            //f.id = '';
             this.add.emit(f);
         }
     }
@@ -83,7 +77,6 @@ export class FactorDetailComponent {
     reset() {
         this.factorForm.reset({
             name: '',
-            type: '',
             category: '',
             id: '',
             deleteFactorControl: {value: '', disabled: true}
