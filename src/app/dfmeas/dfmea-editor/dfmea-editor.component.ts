@@ -44,6 +44,8 @@ export class DfmeaEditorComponent {
             this.dfmeaForm.get('teamMembers').setValue(dfmea.teamMembers);
             this.dfmeaForm.get('partNumber').setValue(dfmea.partNumber);
             this.dfmeaForm.get('deleteDfmeaControl').enable();
+            this.dfmeaForm.get('deleteDfmeaControl').enable();
+            this.dfmeaForm.get('number').disable();
         }
     }
 
@@ -51,7 +53,9 @@ export class DfmeaEditorComponent {
     @Output() update = new EventEmitter<Dfmea>();
     @Output() delete = new EventEmitter<number>();
 
-    constructor(public datepipe: DatePipe) {this.addCheck = true;}
+    constructor(public datepipe: DatePipe) {
+        this.addCheck = true;
+    }
 
     onSubmit() {
         if (this.dfmeaForm.valid) {
@@ -78,7 +82,7 @@ export class DfmeaEditorComponent {
     reset() {
         this.dfmeaForm.reset({
             id: '',
-            number: '',
+            number: {value: '', disabled: false},
             title: '',
             type: '',
             originator: '',
