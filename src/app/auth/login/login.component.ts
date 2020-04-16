@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {Router, NavigationExtras} from '@angular/router';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 import {AuthenticationService} from '../auth.service';
 
 @Component({
@@ -12,8 +12,8 @@ export class LoginComponent {
     message: string;
 
     loginForm = new FormGroup({
-        username: new FormControl(''),
-        password: new FormControl(''),
+        username: new FormControl('', [Validators.required]),
+        password: new FormControl('', [Validators.required])
     });
 
     constructor(public authService: AuthenticationService, public router: Router) {
@@ -25,7 +25,7 @@ export class LoginComponent {
         this.message = 'Logged ' + (this.authService.isLoggedIn() ? 'in' : 'out');
     }
 
-    login() {
+    onLogin() {
         this.message = 'Trying to log in ...';
 
         this.authService.login(this.loginForm.value).subscribe(
@@ -52,8 +52,4 @@ export class LoginComponent {
             });
     }
 
-    logout() {
-        this.authService.logout();
-        this.setMessage();
-    }
 }

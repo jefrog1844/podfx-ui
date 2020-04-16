@@ -1,5 +1,5 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import {FormGroup, FormControl, Validators} from '@angular/forms';
 
 import {Block} from '../block';
 
@@ -14,7 +14,7 @@ export class AddBlockComponent {
 
 
     addForm = new FormGroup({
-        name: new FormControl(''),
+        name: new FormControl('', [Validators.required]),
         type: new FormControl(''),
         dfmeaId: new FormControl(''),
         parentId: new FormControl('')
