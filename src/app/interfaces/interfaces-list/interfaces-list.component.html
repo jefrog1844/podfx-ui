@@ -3,7 +3,7 @@
          <table class="mui-table mui-table--bordered" *ngFor="let m of matrices">
             <thead>
                 <tr>
-                    <th colspan="6" style="text-align:left;background-color: orange">{{m.inputFactor.name}}</th> 
+                    <th colspan="6" style="text-align:left;background-color: orange">{{m.key.name}}</th> 
                 </tr>
                 <tr>
                     <th style='width: 150px;'>Item</th>
@@ -17,50 +17,54 @@
             <tbody>
 
                 <ng-container *ngIf="type === 'INTERNAL'; else elseBlock">
-                    <tr *ngFor="let i of m.internalInterfaces">
-                        <td  (click)="onSelect(i.id)">{{i.outputFactorName}}</td>
-                        <td>
-                            <label class="switch">
-                                <input type="checkbox" [checked]='i.enabled' disabled>
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                        <td>
-                            {{i.physicalConnection}}
-                        </td>
-                        <td>
-                            {{i.energyTransfer}}
-                        </td>
-                        <td>
-                            {{i.materialExchange}}
-                        </td>
-                        <td>
-                            {{i.dataExchange}}
-                        </td>
-                    </tr>   
+                    <ng-container *ngFor="let i of m.value">
+                        <tr *ngIf="i.internal">
+                            <td  (click)="onSelect(i.id)">{{i.outputFactor.name}}</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" [checked]='i.enabled' disabled>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <td>
+                                {{i.physicalConnection}}
+                            </td>
+                            <td>
+                                {{i.energyTransfer}}
+                            </td>
+                            <td>
+                                {{i.materialExchange}}
+                            </td>
+                            <td>
+                                {{i.dataExchange}}
+                            </td>
+                        </tr> 
+                    </ng-container>
                 </ng-container>
                 <ng-template #elseBlock>
-                    <tr *ngFor="let i of m.externalInterfaces">
-                        <td  (click)="onSelect(i.id)">{{i.outputFactorName}}</td>
-                        <td>
-                            <label class="switch">
-                                <input type="checkbox" [checked]='i.enabled' disabled>
-                                <span class="slider round"></span>
-                            </label>
-                        </td>
-                        <td>
-                            {{i.physicalConnection}}
-                        </td>
-                        <td>
-                            {{i.energyTransfer}}
-                        </td>
-                        <td>
-                            {{i.materialExchange}}
-                        </td>
-                        <td>
-                            {{i.dataExchange}}
-                        </td>
-                    </tr>   
+                    <ng-container *ngFor="let i of m.value">
+                        <tr *ngIf="!i.internal">
+                            <td  (click)="onSelect(i.id)">{{i.outputFactor.name}}</td>
+                            <td>
+                                <label class="switch">
+                                    <input type="checkbox" [checked]='i.enabled' disabled>
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
+                            <td>
+                                {{i.physicalConnection}}
+                            </td>
+                            <td>
+                                {{i.energyTransfer}}
+                            </td>
+                            <td>
+                                {{i.materialExchange}}
+                            </td>
+                            <td>
+                                {{i.dataExchange}}
+                            </td>
+                        </tr> 
+                    </ng-container>
                 </ng-template>
 
             </tbody>

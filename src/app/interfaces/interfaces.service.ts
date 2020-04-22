@@ -23,7 +23,6 @@ export class InterfacesService {
     getMatrix(dfmeaId: number): Observable<Matrix[]> {
         const url = `${apiUrl}/${dfmeaId}/interfaces/matrix`;
         return this.http.get<Matrix[]>(url,{withCredentials: true}).pipe(
-            share(),
             tap(_ => this.log(`fetched matrix (dfmeaId)=${dfmeaId}`)),
             catchError(this.handleError<Matrix[]>(`getMatrix dfmeaId=${dfmeaId}`))
         );
