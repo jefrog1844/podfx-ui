@@ -11,14 +11,14 @@
                 <div class="mui-col-md-10">
                     <H1>Internal interfaces</H1>
                     <app-interfaces-list [title]="'Internal'" [type]="'INTERNAL'" [matrices]="matrices$|async"
-                        (selected)="selectInterface($event)"></app-interfaces-list>
+                        (selected)="select($event)"></app-interfaces-list>
                 </div>
             </div>
             <div class="mui-row">
                 <div class="mui-col-md-10">
                     <H1>External interfaces</H1>
                     <app-interfaces-list [title]="'External'" [type]="'EXTERNAL'" [matrices]="matrices$|async"
-                        (selected)="selectInterface($event)"></app-interfaces-list>
+                        (selected)="select($event)"></app-interfaces-list>
 
                 </div>
             </div>

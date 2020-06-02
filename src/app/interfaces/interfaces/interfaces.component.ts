@@ -39,7 +39,7 @@ export class InterfacesComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(sub);
     }
 
-    selectInterface(interfaceId: number) {
+    select(interfaceId: number) {
         this.selectedInterface$ = this.api.getInterfaceDetail(this.selectedDfmeaId, interfaceId);
     }
 

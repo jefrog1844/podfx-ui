@@ -1,1 +1,13 @@
-<p>funktions works!</p>
+<div class="mui-container-fluid">
+    <div class="mui-row">
+        <div class="mui-col-md-2">
+            
+            <app-funktion-detail [selectedFunktion]="selectedFunktion$|async" (delete) = "delete($event)" (update) = "update($event)"></app-funktion-detail>
+           
+        </div>
+        
+        <div class="mui-col-md-10">
+             <app-funktions-list [funktions$]="funktions$" (selected)="select($event)"></app-funktions-list>
+        </div>
+    </div>
+</div>

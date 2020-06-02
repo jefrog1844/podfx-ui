@@ -46,7 +46,7 @@ export class InterfacesDetailComponent implements OnInit {
         this.reset();
     }
 
-    submitInterface() {
+    submit() {
         if (this.interfaceForm.valid) {
             this.update.emit(this.interfaceForm.value);
             this.reset();

@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {FormGroup, FormControl} from '@angular/forms';
+
+import { Funktion } from '../funktion';
 
 @Component({
   selector: 'app-funktion-detail',
@@ -7,9 +10,50 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FunktionDetailComponent implements OnInit {
 
-  constructor() { }
+    private _selectedFunktion: Funktion;
 
-  ngOnInit(): void {
-  }
+    funktionForm = new FormGroup({
+        id: new FormControl(''),
+        name: new FormControl(''),
+        requirement: new FormControl(''),
+    });
+
+
+    @Input()
+    set selectedFunktion(selectedFunktion: Funktion) {
+        if (selectedFunktion) {          
+            this.reset();
+            this.funktionForm.patchValue(selectedFunktion);
+            this.funktionForm.enable();
+        }
+    }
+
+    @Output() update = new EventEmitter<Funktion>();
+
+    get selectedFunktion() {
+        return this._selectedFunktion;
+    }
+
+    constructor() {}
+    
+    ngOnInit() {
+        this.reset();
+    }
+
+    onSubmit() {
+        if (this.funktionForm.valid) {
+            this.update.emit(this.funktionForm.value);
+            this.reset();
+        }
+    }
+    
+    reset() {
+        this.funktionForm.reset();
+        this.funktionForm.disable();
+    }
+
+    cancel() {
+        this.reset();
+    }
 
 }

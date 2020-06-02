@@ -45,13 +45,10 @@ export class InterfacesListComponent {
         } else {
             i.enabled = false;
         }
-        //this.update.emit(i);
     }
 
 
     onSelect(interfaceId: string) {
-        console.log("onSelect(id)= " + interfaceId);
-
         this.selected.emit(interfaceId);
     }
 }

@@ -59,7 +59,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
         this.unsubscribe.add(delSub);
     }
 
-    selectBlock(blockId: number) {
+    select(blockId: number) {
         this.selectedBlock$ = this.api.getBlock(this.selectedDfmeaId, blockId);
     }
 

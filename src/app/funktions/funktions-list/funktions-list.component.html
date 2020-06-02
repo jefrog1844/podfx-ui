@@ -1,1 +1,19 @@
-<p>funktions-list works!</p>
+<div class="mui-col-md-10">
+    <table class="mui-table mui-table--bordered">
+        <thead>
+            <tr>
+                <th>Function</th>
+                <th>Requirement</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let f of funktions$|async">
+                <td style="width: 200px">{{f.name}}</td>
+                <td style="width: 200px">{{f.requirement}}</td>
+                <td style="width: 20px"><button class="mui-btn" (click)="select(f.id)">edit</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

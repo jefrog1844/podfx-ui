@@ -1,1 +1,13 @@
-<p>funktion-detail works</p>
+<form ngNativeValidate class="mui-form" [formGroup]="funktionForm" (ngSubmit)="onSubmit()">
+    <legend>Edit Function</legend>
+    <div class="mui-textfield">
+        <input type="text" formControlName="name" placeholder="enter name">
+        <label>Name</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="requirement" placeholder="enter requirement">
+        <label>Requirement</label>
+    </div>
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small">Submit</button>
+    <button type="button" (click)='cancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+</form>

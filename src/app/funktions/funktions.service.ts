@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {catchError, tap} from 'rxjs/operators';
+import {catchError, tap, share} from 'rxjs/operators';
 
+import {Funktion} from './funktion';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
@@ -18,11 +19,45 @@ export class FunktionsService {
 
   constructor(private http: HttpClient) {}
   
-      generateFunktions(dfmeaId: number): Observable<number> {
+    generateFunktions(dfmeaId: number): Observable<number> {
         const url = `${apiUrl}/${dfmeaId}/funktions/generateFunktions`;
         return this.http.get(url, httpOptions).pipe(
             tap(() => this.log(`generated functions for dfmea id=${dfmeaId}`)),
             catchError(this.handleError<any>('generateFunktions'))
+        );
+    }
+    
+    getFunktionList(dfmeaId: number): Observable<Funktion[]> {
+        const url = `${apiUrl}/${dfmeaId}/funktions`;
+        return this.http.get<Funktion[]>(url,{withCredentials: true})
+            .pipe(
+                share(),
+                tap(_ => this.log('fetched funktion list')),
+                catchError(this.handleError<Funktion[]>('getFunktionList', []))
+            );
+    }
+    
+    getFunktion(dfmeaId: number, funktionId: number): Observable<Funktion> {
+        const url = `${apiUrl}/${dfmeaId}/funktions/${funktionId}`;
+        return this.http.get<Funktion>(url,{withCredentials: true}).pipe(
+            tap(_ => this.log(`fetched funktion id=${funktionId}`)),
+            catchError(this.handleError<Funktion>(`getFunktion id=${funktionId}`))
+        );
+    }
+
+    deleteFunktion(dfmeaId: number, funktionId: number): Observable<Funktion> {
+        const url = `${apiUrl}/${dfmeaId}/funktions/${funktionId}`;
+        return this.http.delete<Funktion>(url, httpOptions).pipe(
+            tap(_ => this.log(`deleteFunktion(id)= ${funktionId}`)),
+            catchError(this.handleError<Funktion>('deleteFunktion'))
+        );
+    }
+
+    updateFunktion(dfmeaId: number, funktion: Funktion): Observable<any> {
+        const url = `${apiUrl}/${dfmeaId}/funktions/${funktion.id}`;
+        return this.http.put(url, funktion, httpOptions).pipe(
+            tap(_ => this.log(`updated funktion id=${funktion.id}`)),
+            catchError(this.handleError<Funktion>('updateFunktion'))
         );
     }
 
