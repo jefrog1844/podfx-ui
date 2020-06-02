@@ -27,6 +27,7 @@ export class InterfacesDetailComponent implements OnInit {
     @Input()
     set selectedInterface(selectedInterface: InterfaceDetail) {
         if (selectedInterface) {
+            this.reset();
             this.interfaceForm.patchValue(selectedInterface);
             this.interfaceForm.enable();
         }
