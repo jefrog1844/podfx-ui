@@ -10,12 +10,13 @@ import { Funktion } from '../funktion';
 })
 export class FunktionDetailComponent implements OnInit {
 
-    private _selectedFunktion: Funktion;
+    private _funktion: Funktion = new Funktion();
 
     funktionForm = new FormGroup({
         id: new FormControl(''),
         name: new FormControl(''),
         requirement: new FormControl(''),
+        deleteControl: new FormControl({value: '', disabled: true})
     });
 
 
@@ -23,15 +24,18 @@ export class FunktionDetailComponent implements OnInit {
     set selectedFunktion(selectedFunktion: Funktion) {
         if (selectedFunktion) {          
             this.reset();
+            this._funktion = selectedFunktion;
             this.funktionForm.patchValue(selectedFunktion);
+            this.funktionForm.get('deleteControl').enable();
             this.funktionForm.enable();
         }
     }
 
     @Output() update = new EventEmitter<Funktion>();
+    @Output() delete = new EventEmitter<number>();
 
     get selectedFunktion() {
-        return this._selectedFunktion;
+        return this._funktion;
     }
 
     constructor() {}
@@ -40,11 +44,15 @@ export class FunktionDetailComponent implements OnInit {
         this.reset();
     }
 
-    onSubmit() {
+    submit() {
         if (this.funktionForm.valid) {
-            this.update.emit(this.funktionForm.value);
-            this.reset();
-        }
+            if (this.funktionForm.get('deleteControl').value && this.funktionForm.get('id').value) {
+                this.delete.emit(this._funktion.id);
+            } else {
+                this.update.emit(this.funktionForm.value);
+            }
+            this.reset();  
+        }          
     }
     
     reset() {
