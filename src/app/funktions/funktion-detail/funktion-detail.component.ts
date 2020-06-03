@@ -44,7 +44,7 @@ export class FunktionDetailComponent implements OnInit {
         this.reset();
     }
 
-    submit() {
+    onSubmit() {
         if (this.funktionForm.valid) {
             if (this.funktionForm.get('deleteControl').value && this.funktionForm.get('id').value) {
                 this.delete.emit(this._funktion.id);
@@ -60,7 +60,7 @@ export class FunktionDetailComponent implements OnInit {
         this.funktionForm.disable();
     }
 
-    cancel() {
+    onCancel() {
         this.reset();
     }
 

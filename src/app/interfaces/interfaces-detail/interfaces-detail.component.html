@@ -1,4 +1,4 @@
-<form ngNativeValidate class="mui-form" [formGroup]="interfaceForm" (ngSubmit)="submit()">
+<form ngNativeValidate class="mui-form" [formGroup]="interfaceForm" (ngSubmit)="onSubmit()">
     <legend>Edit Functions</legend>
     <div class="mui-textfield">
         <input type="text" formControlName="physicalConnection" placeholder="enter function">
@@ -23,6 +23,6 @@
         </label>
     </div>
     <button type="submit" class="mui-btn mui-btn--raised mui-btn--small">Submit</button>
-    <button type="button" (click)='cancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+    <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
     <button type="button" (click)='onGenerate()' class="mui-btn mui-btn--raised mui-btn--small">Generate Functions</button>
 </form>

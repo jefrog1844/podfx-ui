@@ -17,7 +17,7 @@ export class EditBlockComponent {
         type: new FormControl({value: '', disabled: true}, [Validators.required]),
         parentId: new FormControl({value: '', disabled: true}),
         dfmeaId: new FormControl('',[Validators.required]),
-        deleteBlockControl: new FormControl({value: '', disabled: true})
+        deleteControl: new FormControl({value: '', disabled: true})
     });
 
     addForm = new FormGroup({
@@ -41,7 +41,7 @@ export class EditBlockComponent {
             this.editForm.get('type').setValue(block.type);
             this.editForm.get('parentId').setValue(block.parentId);
             this.editForm.get('dfmeaId').setValue(block.dfmeaId);
-            this.editForm.get('deleteBlockControl').enable();
+            this.editForm.get('deleteControl').enable();
             this.editForm.get('name').enable();
             this.editForm.get('type').enable();
             this.editForm.get('parentId').enable();
@@ -61,7 +61,7 @@ export class EditBlockComponent {
 
     onSubmit() {
         if (this.editForm.valid) {
-            if (this.editForm.get('deleteBlockControl').value && this.editForm.get('id').value) {
+            if (this.editForm.get('deleteControl').value && this.editForm.get('id').value) {
                 this.delete.emit(this._block.id);
             } else {
                 this.update.emit(this.editForm.value)
@@ -97,7 +97,7 @@ export class EditBlockComponent {
             type: {value: '', disabled: true},
             dfmeaId: '',
             parentId: {value: '', disabled: true},
-            deleteBlockControl: {value: '', disabled: true}
+            deleteControl: {value: '', disabled: true}
         });
     }
     

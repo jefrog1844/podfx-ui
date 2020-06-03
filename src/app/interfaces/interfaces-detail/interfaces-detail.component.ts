@@ -46,7 +46,7 @@ export class InterfacesDetailComponent implements OnInit {
         this.reset();
     }
 
-    submit() {
+    onSubmit() {
         if (this.interfaceForm.valid) {
             this.update.emit(this.interfaceForm.value);
             this.reset();
@@ -63,7 +63,7 @@ export class InterfacesDetailComponent implements OnInit {
         this.interfaceForm.disable();
     }
 
-    cancel() {
+    onCancel() {
         this.reset();
     }
 }

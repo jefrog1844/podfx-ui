@@ -48,7 +48,7 @@ export class FactorDetailComponent {
 
     constructor() {this.addCheck = true;}
 
-    submit() {
+    onSubmit() {
         if (this.factorForm.valid) {
             if (this.addCheck) {
                 this.factorForm.get('id').setValue(0);
