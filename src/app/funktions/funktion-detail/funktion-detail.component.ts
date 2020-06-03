@@ -21,11 +21,11 @@ export class FunktionDetailComponent implements OnInit {
 
 
     @Input()
-    set selectedFunktion(selectedFunktion: Funktion) {
-        if (selectedFunktion) {          
+    set funktion(funktion: Funktion) {
+        if (funktion) {          
             this.reset();
-            this._funktion = selectedFunktion;
-            this.funktionForm.patchValue(selectedFunktion);
+            this._funktion = funktion;
+            this.funktionForm.patchValue(funktion);
             this.funktionForm.get('deleteControl').enable();
             this.funktionForm.enable();
         }
@@ -34,7 +34,7 @@ export class FunktionDetailComponent implements OnInit {
     @Output() update = new EventEmitter<Funktion>();
     @Output() delete = new EventEmitter<number>();
 
-    get selectedFunktion() {
+    get funktion() {
         return this._funktion;
     }
 

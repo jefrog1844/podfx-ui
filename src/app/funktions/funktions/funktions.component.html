@@ -2,7 +2,7 @@
     <div class="mui-row">
         <div class="mui-col-md-2">
             
-            <app-funktion-detail [selectedFunktion]="selectedFunktion$|async" (delete) = "delete($event)" (update) = "update($event)"></app-funktion-detail>
+            <app-funktion-detail [funktion]="funktion$|async" (delete) = "delete($event)" (update) = "update($event)"></app-funktion-detail>
            
         </div>
         

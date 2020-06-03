@@ -13,8 +13,8 @@ import { Funktion } from '../funktion';
 export class FunktionsComponent  implements OnInit, OnDestroy {
 
     unsubscribe: Subscription = new Subscription();
-    selectedDfmeaId: number;
-    selectedFunktion$: Observable<Funktion>;
+    dfmeaId: number;
+    funktion$: Observable<Funktion>;
     _funktions = new Subject<Funktion[]>();
     funktions$ = this._funktions.asObservable();
 
@@ -25,12 +25,12 @@ export class FunktionsComponent  implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit() {
-        this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
-        this.loadFunktions();
+        this.dfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
+        this.funktions();
     }
 
-    loadFunktions() {
-        const sub = this.api.getFunktionList(this.selectedDfmeaId).subscribe(funktions => {
+    funktions() {
+        const sub = this.api.getFunktionList(this.dfmeaId).subscribe(funktions => {
             this._funktions.next(funktions);
         });
         this.unsubscribe.add(sub);
@@ -38,22 +38,22 @@ export class FunktionsComponent  implements OnInit, OnDestroy {
     }
 
     update(funktion: Funktion) {
-        const updateSub = this.api.updateFunktion(this.selectedDfmeaId, funktion).subscribe(funktion => {
-            this.loadFunktions();
+        const updateSub = this.api.updateFunktion(this.dfmeaId, funktion).subscribe(funktion => {
+            this.funktions();
         });
         this.unsubscribe.add(updateSub);
     }
 
     delete(funktionId: number): void {
-        const delSub = this.api.deleteFunktion(this.selectedDfmeaId, funktionId).subscribe(() => {
-            this.selectedFunktion$ = null;
-            this.loadFunktions();
+        const delSub = this.api.deleteFunktion(this.dfmeaId, funktionId).subscribe(() => {
+            this.funktion$ = null;
+            this.funktions();
         });
         this.unsubscribe.add(delSub);
     }
 
     select(funktionId: number) {
-        this.selectedFunktion$ = this.api.getFunktion(this.selectedDfmeaId, funktionId);
+        this.funktion$ = this.api.getFunktion(this.dfmeaId, funktionId);
     }
 
     ngOnDestroy() {
