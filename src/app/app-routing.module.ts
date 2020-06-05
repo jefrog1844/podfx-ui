@@ -5,7 +5,7 @@ import {DfmeasComponent} from './dfmeas/dfmeas/dfmeas.component';
 import {DfmeaDetailComponent} from './dfmeas/dfmea-detail/dfmea-detail.component';
 import {BlocksComponent} from './blocks/blocks/blocks.component';
 import {FunktionsComponent} from './funktions/funktions/funktions.component';
-import {FailureModesComponent} from './failure-modes/failure-modes.component';
+import {FailureModesComponent} from './failure-modes/failure-modes/failure-modes.component';
 import {EffectsComponent} from './effects/effects.component';
 import {CausesComponent} from './causes/causes.component';
 import {ControlsComponent} from './controls/controls.component';

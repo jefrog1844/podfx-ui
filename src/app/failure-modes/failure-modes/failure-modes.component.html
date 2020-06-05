@@ -1,0 +1,19 @@
+<div class="mui-container-fluid">
+
+    <div class="mui-row">
+
+        <div class="mui-col-md-2">
+            <app-failure-modes-detail></app-failure-modes-detail>
+        </div>
+        <div class="mui-col-md-10">
+            <!-- dashboard -->
+            <div class="mui-row">
+                <div class="mui-col-md-10">
+                    <H1>Failure Mode Matrix</H1>
+                    <app-failure-modes-list [matrix]="matrix$|async"></app-failure-modes-list>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
