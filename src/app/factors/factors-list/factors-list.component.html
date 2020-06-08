@@ -3,6 +3,6 @@
 </div>
 <div class="mui-panel">
     <ul>
-        <li *ngFor="let f of factors" (click)="onSelect(f.id)">{{f.name}}</li>
+        <li *ngFor="let f of factors"><a  (click)="onSelect(f.id)">{{f.name}}</a></li>
     </ul>
 </div>

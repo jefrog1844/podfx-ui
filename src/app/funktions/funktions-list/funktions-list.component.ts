@@ -17,7 +17,7 @@ export class FunktionsListComponent {
 
     constructor() {}
 
-    select(funktionId: number) {
+    onSelect(funktionId: number) {
         this.selected.emit(funktionId);
     }
 

@@ -2,7 +2,7 @@
 <ul class="tree">
     <ng-template #treeView let-blocks>
         <li *ngFor="let block of blocks">
-            <span (click)="onSelect(block.id)">{{block.id}} - {{ block.name }}</span>
+            <span><a (click)="onSelect(block.id)">{{block.id}} - {{ block.name }}</a></span>
             <ul *ngIf="block.children?.length > 0">
                 <ng-container *ngTemplateOutlet="treeView;  context:{ $implicit: block.children }"></ng-container>
             </ul>

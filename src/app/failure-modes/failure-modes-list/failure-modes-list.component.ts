@@ -16,7 +16,7 @@ export class FailureModesListComponent {
 
     constructor() { }
 
-    select(funktionId: number) {
+    onSelect(funktionId: number) {
         console.log("funktion id= "+funktionId);
         this.selected.emit(funktionId);
     }

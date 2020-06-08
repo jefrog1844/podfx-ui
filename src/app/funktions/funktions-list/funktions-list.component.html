@@ -1,5 +1,5 @@
 <div class="mui-col-md-10">
-    <table class="mui-table mui-table--bordered">
+    <table width="100%" class="mui-table mui-table--bordered">
         <thead>
             <tr>
                 <th>Function</th>
@@ -9,9 +9,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let f of funktions$|async">
-                <td style="width: 200px">{{f.name}}</td>
-                <td style="width: 200px">{{f.requirement}}</td>
-                <td style="width: 20px"><button class="mui-btn" (click)="select(f.id)">edit</button></td>
+                <td style="width: 300px"><a (click)="onSelect(f.id)">{{f.name}}</a></td>
+                <td>{{f.requirement}}</td>
             </tr>
         </tbody>
     </table>
