@@ -27,22 +27,24 @@ export class FailureModesDetailComponent implements OnInit {
     @Input()
     set funktion(funktion: Funktion) {
         if (funktion) {
+            this.reset();            
             this._funktion = funktion;
-            this.reset();
             //this.failureForm.patchValue(funktion);
             this.failureForm.get('id').setValue(funktion.id);
-            this.failureForm.get('absent').setValue(funktion.modeMap.ABSENT?funktion.modeMap.ABSENT.name:'');
-            this.failureForm.get('partial').setValue(funktion.modeMap.PARTIAL?funktion.modeMap.PARTIAL.name:'');
-            this.failureForm.get('intermittent').setValue(funktion.modeMap.INTERMITTENT?funktion.modeMap.INTERMITTENT.name:'');
-            this.failureForm.get('excess').setValue(funktion.modeMap.EXCESS?funktion.modeMap.EXCESS.name:'');
-            this.failureForm.get('decay').setValue(funktion.modeMap.DECAY?funktion.modeMap.DECAY.name:'');
-            this.failureForm.get('soon').setValue(funktion.modeMap.SOON?funktion.modeMap.SOON.name:'');
-            this.failureForm.get('late').setValue(funktion.modeMap.LATE?funktion.modeMap.LATE.name:'');
-            this.failureForm.get('incorrect').setValue(funktion.modeMap.INCORRECT?funktion.modeMap.INCORRECT.name:'');
-
+            this.failureForm.get('absent').setValue(funktion.modeMap['ABSENT']?funktion.modeMap['ABSENT'].name:'');
+            this.failureForm.get('partial').setValue(funktion.modeMap['PARTIAL']?funktion.modeMap['PARTIAL'].name:'');
+            this.failureForm.get('intermittent').setValue(funktion.modeMap['INTERMITTENT']?funktion.modeMap['INTERMITTENT'].name:'');
+            this.failureForm.get('excess').setValue(funktion.modeMap['EXCESS']?funktion.modeMap['EXCESS'].name:'');
+            this.failureForm.get('decay').setValue(funktion.modeMap['DECAY']?funktion.modeMap['DECAY'].name:'');
+            this.failureForm.get('soon').setValue(funktion.modeMap['SOON']?funktion.modeMap['SOON'].name:'');
+            this.failureForm.get('late').setValue(funktion.modeMap['LATE']?funktion.modeMap['LATE'].name:'');
+            this.failureForm.get('incorrect').setValue(funktion.modeMap['INCORRECT']?funktion.modeMap['INCORRECT'].name:'');
             this.failureForm.enable();
-                        console.log("this is the funktion: "+funktion);
         }
+    }
+    
+    get funktion() : Funktion {
+        return this._funktion;
     }
 
     @Output() update = new EventEmitter<Funktion>();
@@ -63,6 +65,7 @@ export class FailureModesDetailComponent implements OnInit {
     reset() {
         this.failureForm.reset();
         this.failureForm.disable();
+        this._funktion = null;
     }
 
     onCancel() {

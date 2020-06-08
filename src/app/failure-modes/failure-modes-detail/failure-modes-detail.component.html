@@ -1,5 +1,5 @@
 <form ngNativeValidate class="mui-form" [formGroup]="failureForm" (ngSubmit)="onSubmit()">
-    <legend>Edit Failure Modes</legend>
+    <legend>{{funktion?funktion.name:'Edit Failure Modes'}}</legend>
     <div class="mui-textfield">
         <input type="text" formControlName="absent" placeholder="enter failure mode">
         <label>Absence of function</label>
