@@ -1,5 +1,5 @@
 <div class="mui-col-md-10">
-    <table class="mui-table mui-table--bordered">
+    <table width="100%" class="mui-table mui-table--bordered">
         <thead>
             <tr>
                 <th>Function</th>
@@ -16,8 +16,8 @@
         </thead>
         <tbody>
             <tr *ngFor="let f of funktions$|async">
-                <td style="width: 250px"><a (click)="onSelect(f.id)">{{f.name}}</a></td>
-                <td style="width: 200px">{{f.requirement}}</td>
+                <td style="width: 300px"><a (click)="onSelect(f.id)">{{f.name}}</a></td>
+                <td style="width: 300px">{{f.requirement}}</td>
                 <td>{{f.modeMap['ABSENT']? 'X':''}}</td>
                 <td>{{f.modeMap['PARTIAL']? 'X':''}}</td>
                 <td>{{f.modeMap['INTERMITTENT']? 'X':''}}</td>
