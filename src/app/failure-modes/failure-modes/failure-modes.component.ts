@@ -3,7 +3,9 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {Observable, Subject, Subscription} from 'rxjs';
 
 import {FailureModesService} from '../failure-modes.service';
-import {Matrix} from '../matrix';
+import {FunktionsService} from '../../funktions/funktions.service'
+import {Funktion} from '../../funktions/funktion';
+import {FunktionDetail} from '../../funktions/funktion-detail';
 
 
 @Component({
@@ -12,29 +14,44 @@ import {Matrix} from '../matrix';
   styleUrls: ['./failure-modes.component.css']
 })
 export class FailureModesComponent implements OnInit, OnDestroy {
-    selectedDfmeaId: number;
-    _matrix = new Subject<Matrix>();
-    matrix$ = this._matrix.asObservable();
-
+    dfmeaId: number;
+    _funktions = new Subject<Funktion[]>();
+    funktions$ = this._funktions.asObservable();
+    
+    funktion$: Observable<Funktion>;
+    
     private unsubscribe: Subscription = new Subscription();
 
     constructor(
         private route: ActivatedRoute,
         private router: Router,
-        private api: FailureModesService) {}
+        private api: FailureModesService,
+        private funktionsService: FunktionsService) {}
   
-      ngOnInit() {
-        this.selectedDfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
-        this.getMatrix();
+    ngOnInit() {
+        this.dfmeaId = +this.route.parent.snapshot.paramMap.get('dfmeaId');
+        this.getFailureModes();
     }
 
-    getMatrix() {
-        const sub = this.api.getMatrix(this.selectedDfmeaId).subscribe(matrix => {
-            this._matrix.next(matrix)
+    getFailureModes() {
+        const sub = this.funktionsService.getFunktionList(this.dfmeaId).subscribe(funktions => {
+            this._funktions.next(funktions)
         });
         this.unsubscribe.add(sub);
     }
+    
+    select(funktionId: number) {
+        this.funktion$ = this.funktionsService.getFunktion(this.dfmeaId, funktionId);
+    }
 
+    update(funktion: FunktionDetail) {
+        //const updateSub = this.api.updateFactor(this.selectedDfmeaId, factor).subscribe(f => {
+            //this.getFactors();
+        //});
+        //this.unsubscribe.add(updateSub);
+        console.log("in update function of failure-modes.component");
+    }
+    
     ngOnDestroy() {
         this.unsubscribe.unsubscribe();
     }

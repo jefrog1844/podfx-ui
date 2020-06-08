@@ -3,7 +3,7 @@ import {Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {catchError, tap, share} from 'rxjs/operators';
 
-import {Matrix} from './matrix';
+import {Funktion} from '../funktions/funktion';
 
 const httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
@@ -18,14 +18,6 @@ const apiUrl = "http://localhost:9080/podfx/resources/dfmeas";
 export class FailureModesService {
 
     constructor(private http: HttpClient) {}
-
-    getMatrix(dfmeaId: number): Observable<Matrix> {
-        const url = `${apiUrl}/${dfmeaId}/failure-modes`;
-        return this.http.get<Matrix>(url,{withCredentials: true}).pipe(
-            tap(_ => this.log(`fetched matrix (dfmeaId)=${dfmeaId}`)),
-            catchError(this.handleError<Matrix>(`getMatrix dfmeaId=${dfmeaId}`))
-        );
-    }
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

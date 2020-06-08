@@ -8,7 +8,7 @@
         <input type="text" formControlName="requirement" placeholder="enter requirement">
         <label>Requirement</label>
     </div>
-    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small">Submit</button>
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small" [disabled]="!funktionForm.valid">Submit</button>
     <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
     <div class="mui-checkbox">
         <label>

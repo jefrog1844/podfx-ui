@@ -3,14 +3,14 @@
     <div class="mui-row">
 
         <div class="mui-col-md-2">
-            <app-failure-modes-detail></app-failure-modes-detail>
+            <app-failure-modes-detail [funktion]="funktion$|async" (update) = "update($event)"></app-failure-modes-detail>
         </div>
         <div class="mui-col-md-10">
             <!-- dashboard -->
             <div class="mui-row">
                 <div class="mui-col-md-10">
-                    <H1>Failure Mode Matrix</H1>
-                    <app-failure-modes-list [matrix]="matrix$|async"></app-failure-modes-list>
+                    <H1>Failure Mode Worksheet</H1>
+                    <app-failure-modes-list [funktions$]="funktions$" (selected)="select($event)"></app-failure-modes-list>
                 </div>
             </div>
         </div>

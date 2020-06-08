@@ -1,1 +1,37 @@
-<p>failure-modes-detail works!</p>
+<form ngNativeValidate class="mui-form" [formGroup]="failureForm" (ngSubmit)="onSubmit()">
+    <legend>Edit Failure Modes</legend>
+    <div class="mui-textfield">
+        <input type="text" formControlName="absent" placeholder="enter failure mode">
+        <label>Absence of function</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="partial" placeholder="enter failure mode">
+        <label>Incomplete or partial function</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="intermittent" placeholder="enter failure mode">
+        <label>Intermittent function</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="excess" placeholder="enter failure mode">
+        <label>Excess function</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="decay" placeholder="enter failure mode">
+        <label>Decayed function</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="soon" placeholder="enter failure mode">
+        <label>Function occurs too soon</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="late" placeholder="enter failure mode">
+        <label>Function occurs too late</label>
+    </div>
+    <div class="mui-textfield">
+        <input type="text" formControlName="incorrect" placeholder="enter failure mode">
+        <label>Incorrect function</label>
+    </div>
+    <button type="submit" class="mui-btn mui-btn--raised mui-btn--small" [disabled]="!failureForm.enabled">Submit</button>
+    <button type="button" (click)='onCancel()' class="mui-btn mui-btn--raised mui-btn--small">Cancel</button>
+</form>

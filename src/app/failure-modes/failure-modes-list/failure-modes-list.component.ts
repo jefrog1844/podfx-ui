@@ -1,6 +1,8 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Observable} from 'rxjs';
 
-import {Matrix} from '../matrix';
+
+import {Funktion} from '../../funktions/funktion';
 
 @Component({
   selector: 'app-failure-modes-list',
@@ -9,20 +11,14 @@ import {Matrix} from '../matrix';
 })
 export class FailureModesListComponent {
     
-    private _matrix: Matrix = new Matrix();
-    
-        @Input()
-    set matrix(matrix: Matrix) {
-        this._matrix = matrix;
+    @Input() funktions$: Observable<Funktion[]>;
+    @Output() selected = new EventEmitter<number>();
+
+    constructor() { }
+
+    select(funktionId: number) {
+        console.log("funktion id= "+funktionId);
+        this.selected.emit(funktionId);
     }
-
-    get matrix() {
-        if (this._matrix) {
-            return this._matrix;
-        }
-    }
-  constructor() { }
-
-
 
 }

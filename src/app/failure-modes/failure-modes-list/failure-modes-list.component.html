@@ -4,14 +4,30 @@
             <tr>
                 <th>Function</th>
                 <th>Requirement</th>
+                <th>Absence of function</th>
+                <th>Incomplete or partial function</th>
+                <th>Intermittent function</th>
+                <th>Excess function</th>
+                <th>Decayed function</th>
+                <th>Function occurs too soon</th>
+                <th>Function occurs too late</th>
+                <th>Incorrect function</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let m of matrix">
-                <td style="width: 200px">Function Name</td>
-                <td style="width: 200px">Requirement</td>
-                <td style="width: 20px"><button class="mui-btn">edit</button></td>
+            <tr *ngFor="let f of funktions$|async">
+                <td style="width: 200px">{{f.name}}</td>
+                <td style="width: 200px">{{f.requirement}}</td>
+                <td>{{f.modeMap.ABSENT? 'X':''}}</td>
+                <td>{{f.modeMap.PARTIAL? 'X':''}}</td>
+                <td>{{f.modeMap.INTERMITTENT? 'X':''}}</td>
+                <td>{{f.modeMap.EXCESS? 'X':''}}</td>
+                <td>{{f.modeMap.DECAYED? 'X':''}}</td>
+                <td>{{f.modeMap.SOON? 'X':''}}</td>
+                <td>{{f.modeMap.LATE? 'X':''}}</td>
+                <td>{{f.modeMap.INCORRECT? 'X':''}}</td>
+                <td style="width: 20px"><button class="mui-btn" (click)="select(f.id)">edit</button></td>
             </tr>
         </tbody>
     </table>
