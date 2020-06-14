@@ -31,14 +31,14 @@ export class FailureModesDetailComponent implements OnInit {
             this._funktion = funktion;
             //this.failureForm.patchValue(funktion);
             this.failureForm.get('id').setValue(funktion.id);
-            this.failureForm.get('absent').setValue(funktion.modeMap['ABSENT']?funktion.modeMap['ABSENT'].name:'');
-            this.failureForm.get('partial').setValue(funktion.modeMap['PARTIAL']?funktion.modeMap['PARTIAL'].name:'');
-            this.failureForm.get('intermittent').setValue(funktion.modeMap['INTERMITTENT']?funktion.modeMap['INTERMITTENT'].name:'');
-            this.failureForm.get('excess').setValue(funktion.modeMap['EXCESS']?funktion.modeMap['EXCESS'].name:'');
-            this.failureForm.get('decay').setValue(funktion.modeMap['DECAY']?funktion.modeMap['DECAY'].name:'');
-            this.failureForm.get('soon').setValue(funktion.modeMap['SOON']?funktion.modeMap['SOON'].name:'');
-            this.failureForm.get('late').setValue(funktion.modeMap['LATE']?funktion.modeMap['LATE'].name:'');
-            this.failureForm.get('incorrect').setValue(funktion.modeMap['INCORRECT']?funktion.modeMap['INCORRECT'].name:'');
+            this.failureForm.get('absent').setValue(funktion.failureModes['ABSENT']?funktion.failureModes['ABSENT'].name:'');
+            this.failureForm.get('partial').setValue(funktion.failureModes['PARTIAL']?funktion.failureModes['PARTIAL'].name:'');
+            this.failureForm.get('intermittent').setValue(funktion.failureModes['INTERMITTENT']?funktion.failureModes['INTERMITTENT'].name:'');
+            this.failureForm.get('excess').setValue(funktion.failureModes['EXCESS']?funktion.failureModes['EXCESS'].name:'');
+            this.failureForm.get('decay').setValue(funktion.failureModes['DECAY']?funktion.failureModes['DECAY'].name:'');
+            this.failureForm.get('soon').setValue(funktion.failureModes['SOON']?funktion.failureModes['SOON'].name:'');
+            this.failureForm.get('late').setValue(funktion.failureModes['LATE']?funktion.failureModes['LATE'].name:'');
+            this.failureForm.get('incorrect').setValue(funktion.failureModes['INCORRECT']?funktion.failureModes['INCORRECT'].name:'');
             this.failureForm.enable();
         }
     }
