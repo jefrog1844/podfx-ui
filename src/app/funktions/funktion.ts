@@ -4,7 +4,7 @@ export class Funktion {
     id: number;
     name: string;
     requirement: string;
-    modeMap: {
+    failureModes: {
         [key:string]: Funktion
     };
     constructor(){}
