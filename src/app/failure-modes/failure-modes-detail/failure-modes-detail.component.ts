@@ -71,5 +71,9 @@ export class FailureModesDetailComponent implements OnInit {
     onCancel() {
         this.reset();
     }
+    
+    onClear(field:string) {
+        this.failureForm.get(field).setValue('');
+    }
 
 }

@@ -19,6 +19,7 @@ export class FailureModesComponent implements OnInit, OnDestroy {
     funktions$ = this._funktions.asObservable();
     
     funktion$: Observable<Funktion>;
+    private _funktion: Funktion;
     
     private unsubscribe: Subscription = new Subscription();
 
@@ -42,14 +43,17 @@ export class FailureModesComponent implements OnInit, OnDestroy {
     
     select(funktionId: number) {
         this.funktion$ = this.funktionsService.getFunktion(this.dfmeaId, funktionId);
+        if (this.funktion$) {
+            const sel = this.funktion$.subscribe(funktion => this._funktion = funktion);
+            this.unsubscribe.add(sel);
+        }
     }
 
-    update(funktion: FunktionDetail) {
-        //const updateSub = this.api.updateFactor(this.selectedDfmeaId, factor).subscribe(f => {
-            //this.getFactors();
-        //});
-        //this.unsubscribe.add(updateSub);
-        console.log("in update function of failure-modes.component");
+    update(form: FormData) {
+        const updateSub = this.api.updateFailureModes(this._funktion, form).subscribe(f => {
+            this.getFailureModes();
+        });
+        this.unsubscribe.add(updateSub);
     }
     
     ngOnDestroy() {

@@ -10,7 +10,7 @@ const httpOptions = {
     withCredentials: true
 };
 
-const apiUrl = "http://localhost:9080/podfx/resources/dfmeas";
+const apiUrl = "http://localhost:9080/podfx/resources";
 
 @Injectable({
     providedIn: 'root'
@@ -18,6 +18,14 @@ const apiUrl = "http://localhost:9080/podfx/resources/dfmeas";
 export class FailureModesService {
 
     constructor(private http: HttpClient) {}
+    
+    updateFailureModes(funktion: Funktion, form: FormData): Observable<any> {
+        const url = `${apiUrl}/funktions/${funktion.id}/failure-modes`;
+        return this.http.put(url, form, httpOptions).pipe(
+            tap(_ => this.log(`updated failure modes for funktion id=${funktion.id}`)),
+            catchError(this.handleError<Funktion>('updateFailureModes'))
+        );
+    }    
 
     private handleError<T>(operation = 'operation', result?: T) {
         return (error: any): Observable<T> => {

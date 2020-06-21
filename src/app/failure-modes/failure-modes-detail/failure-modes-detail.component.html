@@ -1,35 +1,35 @@
 <form ngNativeValidate class="mui-form" [formGroup]="failureForm" (ngSubmit)="onSubmit()">
     <legend>{{funktion?funktion.name:'Edit Failure Modes'}}</legend>
     <div class="mui-textfield">
-        <input type="text" formControlName="absent" placeholder="enter failure mode" #absent><a (click) = "absent.value = ''">clear</a>
+        <input type="text" formControlName="absent" placeholder="enter failure mode" #absent><a (click) = "onClear('absent')">clear</a>
         <label>Absence of function</label>
     </div>
     <div class="mui-textfield">
-        <input width="100px" type="text" formControlName="partial" placeholder="enter failure mode" #partial><a (click) = "partial.value = ''">clear</a>
+        <input width="100px" type="text" formControlName="partial" placeholder="enter failure mode" #partial><a (click) = "onClear('partial')">clear</a>
         <label>Incomplete or partial function</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="intermittent" placeholder="enter failure mode" #intermittent><a (click) = "intermittent.value = ''">clear</a>
+        <input type="text" formControlName="intermittent" placeholder="enter failure mode" #intermittent><a (click) = "onClear('intermittent')">clear</a>
         <label>Intermittent function</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="excess" placeholder="enter failure mode" #excess><a (click) = "excess.value = ''">clear</a>
+        <input type="text" formControlName="excess" placeholder="enter failure mode" #excess><a (click) = "onClear('excess')">clear</a>
         <label>Excess function</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="decay" placeholder="enter failure mode" #decay><a (click) = "decay.value = ''">clear</a>
+        <input type="text" formControlName="decay" placeholder="enter failure mode" #decay><a (click) = "onClear('decay')">clear</a>
         <label>Decayed function</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="soon" placeholder="enter failure mode" #soon><a (click) = "soon.value = ''">clear</a>
+        <input type="text" formControlName="soon" placeholder="enter failure mode" #soon><a (click) = "onClear('soon')">clear</a>
         <label>Function occurs too soon</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="late" placeholder="enter failure mode" #late><a (click) = "late.value = ''">clear</a>
+        <input type="text" formControlName="late" placeholder="enter failure mode" #late><a (click) = "onClear('late')">clear</a>
         <label>Function occurs too late</label>
     </div>
     <div class="mui-textfield">
-        <input type="text" formControlName="incorrect" placeholder="enter failure mode" #incorrect><a (click) = "incorrect.value = ''">clear</a>
+        <input type="text" formControlName="incorrect" placeholder="enter failure mode" #incorrect><a (click) = "onClear('incorrect')">clear</a>
         <label>Incorrect function</label>
     </div>
     <button type="submit" class="mui-btn mui-btn--raised mui-btn--small" [disabled]="!failureForm.enabled">Submit</button>
