@@ -19,7 +19,7 @@
                 <ng-container *ngIf="type === 'INTERNAL'; else elseBlock">
                     <ng-container *ngFor="let i of m.value">
                         <tr *ngIf="i.internal">
-                            <td><a (click)="onSelect(i.id)">{{i.outputFactor.name}}</a></td>
+                            <td><a (click)="onSelect(i.id)">{{i.outputFactor.name}}</a><td>
                             <td>
                                 <label class="switch">
                                     <input type="checkbox" [checked]='i.enabled' disabled>
