@@ -1,11 +1,19 @@
-<div class="mui-appbar" style="margin-bottom: 20px;">
-    <a class="mui-btn mui-btn--primary" routerLink="dfmeas" style="vertical-align:middle;" *ngIf="currentUser">Home</a>
-    <a class="mui-btn mui-btn--primary" (click)="onLogout()"
-            *ngIf="currentUser">Logout</a>
+<div class="mui-appbar" style="margin-bottom: 20px">
+  <a
+    class="mui-btn mui-btn--primary"
+    routerLink="dfmeas"
+    style="vertical-align: middle"
+    *ngIf="currentUser"
+    >Home</a
+  >
+  <a class="mui-btn mui-btn--primary" (click)="onLogout()" *ngIf="currentUser"
+    >Logout</a
+  >
 </div>
 
 <div class="mui-container-fluid">
-    <router-outlet></router-outlet>
+  <app-alerts></app-alerts>
+  <router-outlet></router-outlet>
 </div>
 <!--
 <footer>

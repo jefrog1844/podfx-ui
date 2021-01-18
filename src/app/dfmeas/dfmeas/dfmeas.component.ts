@@ -4,6 +4,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 
 import { DfmeasService } from '../dfmeas.service';
 import { Dfmea } from '../dfmea';
+import { AlertsService } from '../../alerts/alerts.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     selectedDfmea$: Observable<Dfmea>;
     unsubscribe: Subscription = new Subscription();
 
-    constructor(private api: DfmeasService, private router: Router) { }
+    constructor(private api: DfmeasService, private router: Router, private alertsService: AlertsService) { }
 
     ngOnInit() {
         this.getDfmeas();
@@ -48,8 +49,14 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     update(dfmea: Dfmea) {
-        const updateSub = this.api.updateDfmea(dfmea).subscribe(dfmea => {
+        // reset alerts on submit
+        this.alertsService.clear();
+
+        const msg = `Update successful: ${dfmea.title}`;
+        const updateSub = this.api.updateDfmea(dfmea).subscribe(() => {
                 this.getDfmeas();
+                
+                this.alertsService.success(msg);
             });
         this.unsubscribe.add(updateSub);
     }

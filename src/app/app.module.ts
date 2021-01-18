@@ -23,9 +23,8 @@ import {CausesComponent} from './causes/causes.component';
 import {ControlsComponent} from './controls/controls.component';
 import {EffectsComponent} from './effects/effects.component';
 
-
-
 import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
+import { AlertsComponent } from './alerts/alerts.component';
 
 @NgModule({
     declarations: [
@@ -33,7 +32,8 @@ import {JwtAuthInterceptor, ErrorInterceptor } from './shared';
         ActionsComponent,
         CausesComponent,
         ControlsComponent,
-        EffectsComponent
+        EffectsComponent,
+        AlertsComponent
     ],
     imports: [
         BrowserModule,
