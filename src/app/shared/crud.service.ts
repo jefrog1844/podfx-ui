@@ -72,9 +72,7 @@ export abstract class CrudService<T, ID> implements CrudOperations<T, ID> {
         };
     }
 
-    /** Log a HeroService message with the MessageService */
     log(message: string) {
-        //this.messageService.add(`HeroService: ${message}`);
         console.log('APIService: ' + message);
     }
 }
