@@ -26,14 +26,14 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     getDfmeas(): void {
-        const sub = this.api.getDfmeaList().subscribe(dfmeas => {
+        const sub = this.api.findAll().subscribe(dfmeas => {
             this._dfmeas.next(dfmeas);
         });
         this.unsubscribe.add(sub);
     }
 
     deleteDfmea(id: number): void {
-        const delSub = this.api.deleteDfmea(id).subscribe(() => {
+        const delSub = this.api.delete(id).subscribe(() => {
             this.selectedDfmea$ = null;
             this.getDfmeas();
         });
@@ -41,8 +41,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     add(dfmea: Dfmea) {
-        //dfmea.id = '';
-        const addSub = this.api.addDfmea(dfmea).subscribe(dfmea => {
+        const addSub = this.api.create(dfmea).subscribe(dfmea => {
                 this.getDfmeas();
             });
         this.unsubscribe.add(addSub);
@@ -53,7 +52,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
         this.alertsService.clear();
 
         const msg = `Update successful: ${dfmea.title}`;
-        const updateSub = this.api.updateDfmea(dfmea).subscribe(() => {
+        const updateSub = this.api.update(dfmea.id, dfmea).subscribe(() => {
                 this.getDfmeas();
                 
                 this.alertsService.success(msg);
@@ -62,7 +61,7 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     delete(dfmeaId: number) {
-        const delSub = this.api.deleteDfmea(dfmeaId).subscribe(dfmea => {
+        const delSub = this.api.delete(dfmeaId).subscribe(dfmea => {
                 this.selectedDfmea$ = null;
                 this.getDfmeas();
             });
@@ -70,11 +69,11 @@ export class DfmeasComponent implements OnInit, OnDestroy {
     }
 
     selectDfmea(dfmeaId: number) {
-        this.selectedDfmea$ = this.api.getDfmea(dfmeaId);
+        this.selectedDfmea$ = this.api.findOne(dfmeaId);
     }
 
     search(term: string) {
-        this.searchResults$ = this.api.searchDfmeas(term);
+        this.searchResults$ = this.api.search('title',term);
     }
 
     ngOnDestroy() {

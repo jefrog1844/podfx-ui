@@ -23,7 +23,7 @@ today: Date = new Date(Date.now());
   ngOnInit() {
     this.dfmea$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.api.getDfmea(+params.get('dfmeaId')))
+        this.api.findOne(+params.get('dfmeaId')))
     );
   }
 
